@@ -4,7 +4,7 @@ namespace Jaomix_Parser;
 
 internal class FileMaker
 {
-    public void Maker(List<string> urls, string folder, string path)
+    public void Maker(List<string> urls, string path)
     {
         Console.WriteLine("LINKS LIST MAKER STARTED");
 
@@ -13,7 +13,6 @@ internal class FileMaker
         foreach (string element in urls)
             if (!linksList.Contains(element))
                 linksList.Add(element);
-        //Open the File
         var linksListFile = new StreamWriter(path, true, Encoding.UTF8);
         foreach (string element in linksList)
             try
@@ -33,14 +32,13 @@ internal class FileMaker
     public void Maker(string text, string path, string bookName, string authorName, int dec)
     {
         Console.WriteLine("BOOK MAKER STARTED");
-        /*            Console.WriteLine("Введите имя файла, куда записать ссылки");*/
-        //Open the File
         var textFile = new StreamWriter(path, true, Encoding.UTF8);
 
         try
         {
             if (dec == 1)
             {
+                // так pandoc понимает, что это имя автора и название книги
                 textFile.WriteLine($"% {bookName} \n");
                 textFile.WriteLine($"% {authorName} \n");
             }
@@ -58,8 +56,6 @@ internal class FileMaker
 
     public void ParrallelMaker(string text, string path)
     {
-        /*            Console.WriteLine("Введите имя файла, куда записать ссылки");*/
-        //Open the File
         var textFile = new StreamWriter(path, true, Encoding.UTF8);
 
         try
@@ -72,11 +68,5 @@ internal class FileMaker
         }
 
         textFile.Close();
-    }
-
-    public string TagsMaker(string bookName, string authorName)
-    {
-        string text = "% {bookName} \n" + $"% {authorName} \n";
-        return text;
     }
 }

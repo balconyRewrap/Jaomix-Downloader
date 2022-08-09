@@ -2,23 +2,10 @@
 
 internal class Program
 {
-    /*def windows_string_replace(str):
-str = str.replace('\\', '')
-str = str.replace('|', '')
-str = str.replace('/', '')
-str = str.replace(':', '')
-str = str.replace('*', '')
-str = str.replace('?', '')
-str = str.replace('"', '')
-str = str.replace('<', '')
-str = str.replace('>', '')
-return str*/
     private static void Main(string[] args)
     {
         var folder = ConfigGiver.Giver();
-/*        MultiThreadingChapterDownloader  parDownloader = new MultiThreadingChapterDownloader();
-            parDownloader.Initializer(folder);*/
-        TxtToEpubConverter.Converter(folder+"testName.txt",folder+"testNane.epub");
+        Choiser.Init(folder);
         Console.WriteLine("PROGRAM FINISHED");
         Console.ReadKey();
     }

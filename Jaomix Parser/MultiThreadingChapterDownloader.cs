@@ -1,43 +1,31 @@
-﻿using System.Text;
-using HtmlAgilityPack;
+﻿using HtmlAgilityPack;
 
 namespace Jaomix_Parser;
 
-internal class MultiThreadingChapterDownloader
+internal class MultiThreadingChapterDownloader : ChapterDownloader
 {
-    public void Initializer(string folder)
+    private void Starter(string folder, string[] links, string bookFileTxt, string bookFileEpub, string bookName,
+        string authorName, int dec, FileMaker fileMaker)
     {
-        Console.WriteLine("Введите название файла, куда запишется книга (c .txt)");
-        string bookFile = folder + Console.ReadLine();
-        Console.WriteLine(
-            "Введите название файла, где находятся ссылки (с .txt) \n Он должен находиться в папке, которую вы задали в начале");
-        string linksFile = folder + Console.ReadLine();
-        Console.WriteLine("Введите название книги");
-        string bookName = Console.ReadLine();
-        Console.WriteLine("Введите имя автора");
-        string authorName = Console.ReadLine();
         var chaptersList = new Dictionary<string, string>();
-
-        string[] links = File.ReadAllLines(linksFile, Encoding.UTF8);
-        int dec = 1;
-        var fileMaker = new FileMaker();
-        string title;
         Parallel.ForEach(links, link =>
         {
-            title = Title.TitleMaker(link);
+            string title = Title.TitleMaker(link);
             string chapterFile = Title.TitleNormalizer(title) + ".txt";
             chaptersList.Add(link, chapterFile);
-            fileMaker.ParrallelMaker(Downloader(link, title), folder + chapterFile);
+            fileMaker.ParrallelMaker(Downloader(link), folder + chapterFile);
         });
         foreach (string link in links)
         {
             string text = File.ReadAllText(folder + chaptersList[link]);
-            fileMaker.Maker(text, bookFile, bookName, authorName, dec);
+            fileMaker.Maker(text, bookFileTxt, bookName, authorName, dec);
             dec++;
         }
+
+        TxtToEpubConverter.Converter(folder + bookFileTxt, bookFileEpub);
     }
 
-    private string Downloader(string url, string title)
+    private string Downloader(string url)
     {
         int countP = 1;
         string element = "/html/body/div[1]/div[3]/div/div/div/div/article/div/div[2]/div/p[" +
@@ -45,7 +33,11 @@ internal class MultiThreadingChapterDownloader
         string text = "";
         var web = new HtmlWeb();
         var document = web.Load(url);
-
+        // xPath элемента с главой
+        string xTitle = "//*[@id=\"dfklje\"]";
+        // Мог бы использовать title из Initialization, но он иногда каким-то образом их другого потока получает title и получается мешанина в книге
+        string title = document.DocumentNode.SelectSingleNode(xTitle).InnerText;
+        // так pandoc (конвертер) распознает название главы
         text += "\n# " + title + "\n \n \n";
         var x = document.DocumentNode.SelectSingleNode(element);
 
@@ -59,7 +51,7 @@ internal class MultiThreadingChapterDownloader
                                       paragraph.Contains("Ранобэ, Новеллы на русском, читать онлайн,") ||
                                       paragraph.Contains("Переводчик") ||
                                       paragraph.Contains("Если вы обнаружите какие-либо ошибки");
-
+                // epub необходимо два символа перехода для нового параграфа
                 if (!uselessBoolPar) text += paragraph + "\n \n";
 
 

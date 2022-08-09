@@ -11,10 +11,8 @@ internal class LinksDownloader
         var options = new ChromeOptions();
         options.AddArguments("headless");
         IWebDriver driver = new ChromeDriver(options);
-        /*            IWebDriver driver = new ChromeDriver();*/
         driver.Navigate().GoToUrl(url);
         try
-            /*            OpenQA.Selenium.NoSuchElementException*/
         {
             driver.FindElements(
                 By.XPath("/html/body/div[1]/div[3]/div/div/div/div/div[2]/div[2]/div/div[1]/select"));
@@ -116,6 +114,6 @@ internal class LinksDownloader
         string path = folder + Console.ReadLine();
         var urls = OnClick(url);
         var fileMaker = new FileMaker();
-        fileMaker.Maker(urls, folder, path);
+        fileMaker.Maker(urls, path);
     }
 }
