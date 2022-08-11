@@ -1,3 +1,0 @@
-C:\Users\MS8SNEIP\source\repos\Jaomix Parser\Jaomix Parser\bin\Release\net6.0\publish\win-x64\Jaomix Parser.pdb
-C:\Users\MS8SNEIP\source\repos\Jaomix Parser\Jaomix Parser\bin\Release\net6.0\publish\win-x64\Jaomix Parser.dll.config
-C:\Users\MS8SNEIP\source\repos\Jaomix Parser\Jaomix Parser\bin\Release\net6.0\publish\win-x64\Jaomix Parser.exe
