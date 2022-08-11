@@ -7,7 +7,7 @@ internal class LinksDownloader
 {
     private static List<string> OnClick(string url)
     {
-        string? x = "";
+        string x = "";
         var options = new ChromeOptions();
         options.AddArguments("headless");
         IWebDriver driver = new ChromeDriver(options);
@@ -110,7 +110,7 @@ internal class LinksDownloader
 
     public static void Downloader(string url, string folder)
     {
-        Console.WriteLine("Введите имя файла, куда записать ссылки");
+        Console.WriteLine("Введите имя файла, куда записать ссылки. Например links.txt");
         string path = folder + Console.ReadLine();
         var urls = OnClick(url);
         var fileMaker = new FileMaker();

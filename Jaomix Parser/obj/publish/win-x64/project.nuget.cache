@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "dgSpecHash": "MPdIcEscedwZFeD6qREgwmTfF693Ent/ythRlcu6l/rOwzFDupro27WhvMhBvur7mTuhgA2QjX/aBS64wVuIvw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\MS8SNEIP\\source\\repos\\Jaomix Parser\\Jaomix Parser\\JaomixParser.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\MS8SNEIP\\.nuget\\packages\\cliwrap\\3.4.4\\cliwrap.3.4.4.nupkg.sha512",
+    "C:\\Users\\MS8SNEIP\\.nuget\\packages\\htmlagilitypack\\1.11.43\\htmlagilitypack.1.11.43.nupkg.sha512",
+    "C:\\Users\\MS8SNEIP\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\MS8SNEIP\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\MS8SNEIP\\.nuget\\packages\\pandoc\\1.0.0\\pandoc.1.0.0.nupkg.sha512",
+    "C:\\Users\\MS8SNEIP\\.nuget\\packages\\replicant\\1.2.0\\replicant.1.2.0.nupkg.sha512",
+    "C:\\Users\\MS8SNEIP\\.nuget\\packages\\selenium.webdriver\\4.3.0\\selenium.webdriver.4.3.0.nupkg.sha512",
+    "C:\\Users\\MS8SNEIP\\.nuget\\packages\\selenium.webdriver.chromedriver\\104.0.5112.7900\\selenium.webdriver.chromedriver.104.0.5112.7900.nupkg.sha512",
+    "C:\\Users\\MS8SNEIP\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.0\\system.configuration.configurationmanager.6.0.0.nupkg.sha512",
+    "C:\\Users\\MS8SNEIP\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
+    "C:\\Users\\MS8SNEIP\\.nuget\\packages\\system.security.accesscontrol\\6.0.0\\system.security.accesscontrol.6.0.0.nupkg.sha512",
+    "C:\\Users\\MS8SNEIP\\.nuget\\packages\\system.security.cryptography.protecteddata\\6.0.0\\system.security.cryptography.protecteddata.6.0.0.nupkg.sha512",
+    "C:\\Users\\MS8SNEIP\\.nuget\\packages\\system.security.permissions\\6.0.0\\system.security.permissions.6.0.0.nupkg.sha512",
+    "C:\\Users\\MS8SNEIP\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\MS8SNEIP\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\6.0.5\\microsoft.netcore.app.runtime.win-x64.6.0.5.nupkg.sha512",
+    "C:\\Users\\MS8SNEIP\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\6.0.5\\microsoft.windowsdesktop.app.runtime.win-x64.6.0.5.nupkg.sha512",
+    "C:\\Users\\MS8SNEIP\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\6.0.5\\microsoft.aspnetcore.app.runtime.win-x64.6.0.5.nupkg.sha512"
+  ],
+  "logs": []
+}

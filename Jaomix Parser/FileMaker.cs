@@ -15,6 +15,7 @@ internal class FileMaker
                 linksList.Add(element);
         var linksListFile = new StreamWriter(path, true, Encoding.UTF8);
         foreach (string element in linksList)
+        {
             try
             {
                 linksListFile.WriteLine(element);
@@ -24,6 +25,7 @@ internal class FileMaker
             {
                 Console.WriteLine("Не был записан в файл " + element);
             }
+        }
 
         linksListFile.Close();
         Console.WriteLine("LINKS LIST MAKER FINISHED");

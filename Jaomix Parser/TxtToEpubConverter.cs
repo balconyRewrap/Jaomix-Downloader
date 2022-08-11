@@ -1,13 +1,13 @@
-﻿using Pandoc;
-
-namespace Jaomix_Parser
+﻿namespace Jaomix_Parser
 {
     internal class TxtToEpubConverter
     {
-        public static async void Converter(string txtFilePath, string epubFilePath)
+        public static void Converter(string txtFilePath, string epubFilePath)
 
         {
-            await PandocInstance.Convert<CommonMarkIn, Epub3Out>(txtFilePath, epubFilePath);
+            string strCmdText;
+            strCmdText = $"/C pandoc {txtFilePath} -o {epubFilePath}";
+            System.Diagnostics.Process.Start("CMD.exe", strCmdText);
         }
     }
 }

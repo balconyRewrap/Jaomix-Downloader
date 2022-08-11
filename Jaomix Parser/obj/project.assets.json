@@ -600,9 +600,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MS8SNEIP\\source\\repos\\Jaomix Parser\\Jaomix Parser\\Jaomix Parser.csproj",
-      "projectName": "Jaomix Parser",
-      "projectPath": "C:\\Users\\MS8SNEIP\\source\\repos\\Jaomix Parser\\Jaomix Parser\\Jaomix Parser.csproj",
+      "projectUniqueName": "C:\\Users\\MS8SNEIP\\source\\repos\\Jaomix Parser\\Jaomix Parser\\JaomixParser.csproj",
+      "projectName": "JaomixParser",
+      "projectPath": "C:\\Users\\MS8SNEIP\\source\\repos\\Jaomix Parser\\Jaomix Parser\\JaomixParser.csproj",
       "packagesPath": "C:\\Users\\MS8SNEIP\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\MS8SNEIP\\source\\repos\\Jaomix Parser\\Jaomix Parser\\obj\\",
       "projectStyle": "PackageReference",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "un5A47Dzq68gydr3tQwPuNctcXG8VKFKm3U5i2fZgLKeiBPgfYhDTCfaOA+bZq6y6pwp3oW3Wtjr6xDOIIdDGQ==",
+  "dgSpecHash": "0efeRw0PDb+ozo/o5id+Dq8P4r2x418sZqlSyAD6a6Pu2969IXkanQEte8lyUjgCmDtlLCo0Dc8U2fegio2pdg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\MS8SNEIP\\source\\repos\\Jaomix Parser\\Jaomix Parser\\Jaomix Parser.csproj",
+  "projectFilePath": "C:\\Users\\MS8SNEIP\\source\\repos\\Jaomix Parser\\Jaomix Parser\\JaomixParser.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MS8SNEIP\\.nuget\\packages\\cliwrap\\3.4.4\\cliwrap.3.4.4.nupkg.sha512",
     "C:\\Users\\MS8SNEIP\\.nuget\\packages\\htmlagilitypack\\1.11.43\\htmlagilitypack.1.11.43.nupkg.sha512",

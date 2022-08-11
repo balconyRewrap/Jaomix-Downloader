@@ -1,0 +1,3 @@
+C:\Users\MS8SNEIP\3D Objects\JaomixParser.pdb
+C:\Users\MS8SNEIP\3D Objects\JaomixParser.dll.config
+C:\Users\MS8SNEIP\3D Objects\JaomixParser.exe
