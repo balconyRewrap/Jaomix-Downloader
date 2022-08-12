@@ -3,7 +3,7 @@ using HtmlAgilityPack;
 
 namespace Jaomix_Parser;
 
-internal class SlowBookDownloader : IBookDownloader
+public class SlowBookDownloader
 {
     public void MakeBook(string folder, string[] links, string bookFileTxt, string bookFileEpub, string bookName, string authorName, int dec, FileMaker fileMaker, string finalFileType)
     {
@@ -13,7 +13,7 @@ internal class SlowBookDownloader : IBookDownloader
             Console.WriteLine(dec);
             dec++;
         }
-        if (finalFileType == "1")
+        if (finalFileType != "1")
         {
             TxtToEpubConverter.Converter(bookFileTxt, bookFileEpub);
 

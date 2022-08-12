@@ -2,7 +2,7 @@
 
 namespace Jaomix_Parser;
 
-internal class FileMaker
+public class FileMaker
 {
     public void Maker(List<string> urls, string path)
     {
@@ -41,8 +41,8 @@ internal class FileMaker
             if (dec == 1)
             {
                 // так pandoc понимает, что это имя автора и название книги
-                textFile.WriteLine($"% {bookName} \n");
-                textFile.WriteLine($"% {authorName} \n");
+                textFile.WriteLine($"% {bookName}");
+                textFile.WriteLine($"% {authorName}\n");
             }
 
             textFile.WriteLine(text);
@@ -56,7 +56,7 @@ internal class FileMaker
         Console.WriteLine("BOOK MAKER FINISHED");
     }
 
-    public void ParrallelMaker(string text, string path)
+    public void ParrallelMaker(string text, string path, string delFileSelection)
     {
         var textFile = new StreamWriter(path, true, Encoding.UTF8);
 
@@ -70,5 +70,17 @@ internal class FileMaker
         }
 
         textFile.Close();
+        if (delFileSelection != "1")
+        {
+            try
+            {
+                File.Delete(path);
+            }
+            catch
+            {
+                Console.WriteLine($"Не удалена глава по пути: {path}");
+            }
+
+        }
     }
 }

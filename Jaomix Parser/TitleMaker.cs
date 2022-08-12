@@ -2,7 +2,7 @@
 
 namespace Jaomix_Parser;
 
-internal class TitleMaker
+public class TitleMaker
 {
     public static string Maker(string url)
     {
@@ -32,7 +32,7 @@ internal class TitleMaker
                 }
 
                 error++;
-                Console.WriteLine(error + $" - {url}");
+                Console.WriteLine($"Количество перезагрузок страницы - {error}, url страницы - {url}");
             }
         }
         return title;

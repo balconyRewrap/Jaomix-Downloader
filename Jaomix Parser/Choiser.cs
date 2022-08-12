@@ -35,7 +35,7 @@ internal class Choiser
                 ChaptDownChoise(folder);
                 break;
             case "5":
-                ChaptDownChoise(folder);
+                TxtToEpubConverterChoise(folder);
                 break;
             case "0":
                 Environment.Exit(0);
@@ -61,15 +61,20 @@ internal class Choiser
         string authorName = Console.ReadLine();
 
         Console.WriteLine("Какой итоговый файл необходим?");
-        Console.WriteLine("Введите 1, если необходим .epub\n ");
-        Console.WriteLine("Введите 2, если необходим .txt\n ");
+        Console.WriteLine("Введите ENTER, если необходим .epub\n ");
+        Console.WriteLine("Введите 1, если необходим .txt\n ");
         string finalFileType = Console.ReadLine();
+
+        Console.WriteLine("Необходимо ли вам оставлять .txt файлы глав?");
+        Console.WriteLine("Введите ENTER, если не необходимо\n");
+        Console.WriteLine("Введите 1, если необходимо\n");
+        string delFileSelection = Console.ReadLine();
 
         string[] links = File.ReadAllLines(linksFile, Encoding.UTF8);
         int dec = 1;
         FileMaker fileMaker = new FileMaker();
         var x = new MultiThreadingBookDownloader();
-        x.MakeBook(folder, links, bookFileTxt, bookFileEpub, bookName, authorName, dec, fileMaker, finalFileType);
+        x.MakeBook(folder, links, bookFileTxt, bookFileEpub, bookName, authorName, dec, fileMaker, finalFileType, delFileSelection);
         Init(folder);
     }
 
@@ -89,8 +94,8 @@ internal class Choiser
         string authorName = Console.ReadLine();
 
         Console.WriteLine("Какой итоговый файл необходим?");
-        Console.WriteLine("Введите 1, если необходим .epub\n ");
-        Console.WriteLine("Введите 2, если необходим .txt\n ");
+        Console.WriteLine("Введите ENTER, если необходим .epub\n ");
+        Console.WriteLine("Введите 1, если необходим .txt\n ");
         string finalFileType = Console.ReadLine();
 
         string[] links = File.ReadAllLines(linksFile, Encoding.UTF8);
@@ -118,10 +123,10 @@ internal class Choiser
     private static void TxtToEpubConverterChoise(string folder)
     {
         Console.WriteLine("Введите название изначального файла .txt, например text.txt");
-        string bookFileTxt = folder + Console.ReadLine() + ".txt";
+        string bookFileTxt = folder + Console.ReadLine();
         Console.WriteLine("Введите название конечного файла .epub, например text.epub");
-        string bookFileEpub = folder + Console.ReadLine() + ".epub";
-        TxtToEpubConverter.Converter(bookFileTxt,bookFileEpub);
+        string bookFileEpub = folder + Console.ReadLine();
+        TxtToEpubConverter.Converter(bookFileTxt, bookFileEpub);
         Init(folder);
 
     }

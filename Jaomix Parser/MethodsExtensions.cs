@@ -12,7 +12,7 @@
             }
             return title;
         }
-        public static string UrlNormalizer(this string url)
+/*        public static string UrlNormalizer(this string url)
         {
             url = url.Split("/")[4];
             string[] uChars = { "\\", "|", "/", ":", "*", "?", Convert.ToString('"'), "<", ">","-" };
@@ -21,7 +21,7 @@
                 url = url.Replace(uChar, " ");
             }
             return url;
-        }
+        }*/
 
     }
 }
