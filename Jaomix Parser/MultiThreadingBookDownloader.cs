@@ -2,11 +2,11 @@
 
 namespace Jaomix_Parser;
 
-internal class MultiThreadingBookDownloader : IBookDownloader
+public class MultiThreadingBookDownloader
 {
 
     public void MakeBook(string folder, string[] links, string bookFileTxt, string bookFileEpub, string bookName,
-        string authorName, int dec, FileMaker fileMaker, string finalFileType)
+        string authorName, int dec, FileMaker fileMaker, string finalFileType, string delFileSelection)
     {
         var chaptersList = new Dictionary<string, string>();
         Parallel.ForEach(links, link =>
@@ -14,7 +14,7 @@ internal class MultiThreadingBookDownloader : IBookDownloader
             string title = TitleMaker.Maker(link);
             string chapterFile = title.TitleNormalizer() + ".txt";
             chaptersList.Add(link, chapterFile);
-            fileMaker.ParrallelMaker(DownloadChapter(link), folder + chapterFile);
+            fileMaker.ParrallelMaker(DownloadChapter(link), folder + chapterFile, delFileSelection);
         });
         foreach (string link in links)
         {
@@ -24,7 +24,7 @@ internal class MultiThreadingBookDownloader : IBookDownloader
         }
 
         Console.WriteLine("Файл книги .txt создан успешно");
-        if (finalFileType == "1")
+        if (finalFileType != "1")
         {
             TxtToEpubConverter.Converter(bookFileTxt, bookFileEpub);
 

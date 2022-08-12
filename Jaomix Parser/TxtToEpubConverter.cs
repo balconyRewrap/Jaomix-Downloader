@@ -1,6 +1,6 @@
 ﻿namespace Jaomix_Parser
 {
-    internal class TxtToEpubConverter
+    public class TxtToEpubConverter
     {
         public static void Converter(string txtFilePath, string epubFilePath)
 

@@ -2,8 +2,7 @@
 using OpenQA.Selenium.Chrome;
 
 namespace Jaomix_Parser;
-
-internal class LinksDownloader
+public class LinksDownloader
 {
     private static List<string> OnClick(string url)
     {

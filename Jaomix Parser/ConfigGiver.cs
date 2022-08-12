@@ -16,7 +16,7 @@ internal class ConfigGiver : IConfigGiver
 
         if (folderDirectory == null)
         {
-            Console.WriteLine("Введите путь, в который сохранять все файлы. Например C:/folder/");
+            Console.WriteLine("Введите путь, в который сохранять все файлы. Например C:\\folder\\");
             string FD = Console.ReadLine();
             // открываем текущий конфиг специальным обьектом
             var currentConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
