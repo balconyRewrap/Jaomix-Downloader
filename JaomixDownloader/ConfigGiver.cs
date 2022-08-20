@@ -16,7 +16,7 @@ internal class ConfigGiver
     private string CreateActiveFolderPath()
     {
         var currentConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-        Console.WriteLine(GlobalStrings.ResourceManager.GetString("configActiveFolder", CultureInfo.CurrentCulture));
+        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("configActiveFolder", CultureInfo.CurrentCulture));
         string newActiveFolderDirectory = Console.ReadLine();
         // добавляем позицию в раздел AppSettings
         currentConfig.AppSettings.Settings.Add("folder_directory", newActiveFolderDirectory);
@@ -32,7 +32,7 @@ internal class ConfigGiver
     {
         var currentConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
         Console.WriteLine(
-            GlobalStrings.ResourceManager.GetString("configActiveFolder", CultureInfo.CurrentCulture));
+            Resources.GlobalResources.ResourceManager.GetString("configActiveFolder", CultureInfo.CurrentCulture));
         string folderDirectoryReadLine = Console.ReadLine();
         // открываем текущий конфиг специальным обьектом
         currentConfig.AppSettings.Settings["folder_directory"].Value = folderDirectoryReadLine;
@@ -55,7 +55,7 @@ internal class ConfigGiver
 
     private string CreateProgramLanguage()
     {
-        Console.WriteLine(GlobalStrings.ResourceManager.GetString("langGiverHead", CultureInfo.CurrentCulture));
+        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("langGiverHead", CultureInfo.CurrentCulture));
         // стандартное значение
         string lang = "en-US";
         Console.WriteLine("");
@@ -86,7 +86,7 @@ internal class ConfigGiver
     {
         var currentConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
         Console.WriteLine(
-            GlobalStrings.ResourceManager.GetString("langGiverHead", CultureInfo.CurrentCulture));
+            Resources.GlobalResources.ResourceManager.GetString("langGiverHead", CultureInfo.CurrentCulture));
         string lang = "en-US";
         string langchoice = Console.ReadLine();
         switch (langchoice)

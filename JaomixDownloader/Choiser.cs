@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Globalization;
+using System.Resources;
 
 namespace JaomixDownloader;
 
@@ -9,7 +10,8 @@ internal class Choiser
     {
         while (true)
         {
-            Console.WriteLine(GlobalStrings.ResourceManager.GetString("choicerInitHeader", CultureInfo.CurrentCulture));
+
+            Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("choicerInitHeader", CultureInfo.CurrentCulture));
             string decision = Console.ReadLine();
 
             switch (decision)
@@ -45,7 +47,7 @@ internal class Choiser
         var downloaderParamsSaver = new MtDownloaderParamsSaver();
 
 
-        Console.WriteLine(GlobalStrings.ResourceManager.GetString("linksFileName", CultureInfo.CurrentCulture));
+        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("linksFileName", CultureInfo.CurrentCulture));
         string linksFile = folder + Console.ReadLine();
         downloaderParamsSaver.ChaptersLinks = File.ReadAllLines(linksFile, Encoding.UTF8);
         string mainPageUrl = downloaderParamsSaver.ChaptersLinks[0].GiveMainUrlFromDerivative();
@@ -61,15 +63,15 @@ internal class Choiser
         book.MetadataFilePath = folder + "metadata.yaml";
 
 
-        Console.WriteLine(GlobalStrings.ResourceManager.GetString("bookFileNameNoExtensions", CultureInfo.CurrentCulture));
+        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("bookFileNameNoExtensions", CultureInfo.CurrentCulture));
         downloaderParamsSaver.textFileName = book.textFileName = folder + Console.ReadLine();
 
-        Console.WriteLine(GlobalStrings.ResourceManager.GetString("delTempFiles", CultureInfo.CurrentCulture));
+        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("delTempFiles", CultureInfo.CurrentCulture));
         downloaderParamsSaver.DelFileSelection = Console.ReadLine();
 
         downloaderParamsSaver.Folder = folder;
 
-        Console.WriteLine(GlobalStrings.ResourceManager.GetString("finalFileExtension", CultureInfo.CurrentCulture));
+        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("finalFileExtension", CultureInfo.CurrentCulture));
         string finalFileType = Console.ReadLine();
 
 
@@ -85,7 +87,7 @@ internal class Choiser
         var downloaderParamsSaver = new SlowDownloaderParamsSaver();
 
 
-        Console.WriteLine(GlobalStrings.ResourceManager.GetString("linksFileName", CultureInfo.CurrentCulture));
+        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("linksFileName", CultureInfo.CurrentCulture));
         string linksFile = folder + Console.ReadLine();
         downloaderParamsSaver.ChaptersLinks = File.ReadAllLines(linksFile, Encoding.UTF8);
         string mainPageUrl = downloaderParamsSaver.ChaptersLinks[0].GiveMainUrlFromDerivative();
@@ -101,11 +103,11 @@ internal class Choiser
         book.MetadataFilePath = folder + "metadata.yaml";
 
 
-        Console.WriteLine(GlobalStrings.ResourceManager.GetString("bookFileNameNoExtensions", CultureInfo.CurrentCulture));
+        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("bookFileNameNoExtensions", CultureInfo.CurrentCulture));
         downloaderParamsSaver.textFileName = book.textFileName = folder + Console.ReadLine();
 
 
-        Console.WriteLine(GlobalStrings.ResourceManager.GetString("finalFileExtension", CultureInfo.CurrentCulture));
+        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("finalFileExtension", CultureInfo.CurrentCulture));
         string finalFileType = Console.ReadLine();
 
 
@@ -116,7 +118,7 @@ internal class Choiser
 
     private static void ChooseLinksParser(string folder)
     {
-        Console.WriteLine(GlobalStrings.ResourceManager.GetString("bookUrl", CultureInfo.CurrentCulture));
+        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("bookUrl", CultureInfo.CurrentCulture));
         LinksDownloader.ParseLinksToFile(Console.ReadLine(), folder);
     }
 
@@ -138,10 +140,10 @@ internal class Choiser
 
     private static void ChooseTxtToEpubConverter(string folder)
     {
-        Console.WriteLine(GlobalStrings.ResourceManager.GetString("bookFileNameTXT", CultureInfo.CurrentCulture));
+        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("bookFileNameTXT", CultureInfo.CurrentCulture));
         string bookFileTxt = folder + Console.ReadLine();
 
-        Console.WriteLine(GlobalStrings.ResourceManager.GetString("bookFileNameEPUB", CultureInfo.CurrentCulture));
+        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("bookFileNameEPUB", CultureInfo.CurrentCulture));
         string bookFileEpub = folder + Console.ReadLine();
 
         TxtToEpubConverter.Convert(bookFileTxt, bookFileEpub);

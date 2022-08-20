@@ -9,14 +9,15 @@ public class LinksDownloader
 
     public static void ParseLinksToFile(string url, string folder)
     {
-        Console.WriteLine(GlobalStrings.ResourceManager.GetString("linksFileNameNew", CultureInfo.CurrentCulture));
+        Console.WriteLine(
+            Resources.GlobalResources.ResourceManager.GetString("linksFileNameNew", CultureInfo.CurrentCulture));
         string path = folder + Console.ReadLine();
         var urls = ParseLinks(url);
         while(true)
         {
             Console.WriteLine(
-                GlobalStrings.ResourceManager.GetString("chapterLinksNumber", CultureInfo.CurrentCulture) + urls.Count);
-            Console.WriteLine(GlobalStrings.ResourceManager.GetString("parseLinksAgain", CultureInfo.CurrentCulture));
+                Resources.GlobalResources.ResourceManager.GetString("chapterLinksNumber", CultureInfo.CurrentCulture) + urls.Count);
+            Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("parseLinksAgain", CultureInfo.CurrentCulture));
             if (Console.ReadLine() != "1")
             {
                 break;

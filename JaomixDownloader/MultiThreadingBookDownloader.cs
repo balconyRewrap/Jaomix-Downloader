@@ -69,13 +69,13 @@ public class MultiThreadingBookDownloader
                 }
                 catch
                 {
-                    Console.WriteLine(GlobalStrings.ResourceManager.GetString("chapterFileRemoveFailure", CultureInfo.CurrentCulture) + chapterFilePath);
+                    Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("chapterFileRemoveFailure", CultureInfo.CurrentCulture) + chapterFilePath);
                 }
         
             }
         }
 
-        Console.WriteLine(GlobalStrings.ResourceManager.GetString("bookTxtMakeSuccess", CultureInfo.CurrentCulture));
+        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("bookTxtMakeSuccess", CultureInfo.CurrentCulture));
 
     }
 
@@ -120,7 +120,7 @@ public class MultiThreadingBookDownloader
         }
         catch (Exception)
         {
-            Console.WriteLine(url+GlobalStrings.ResourceManager.GetString("paragraphGetError", CultureInfo.CurrentCulture));
+            Console.WriteLine(url+Resources.GlobalResources.ResourceManager.GetString("paragraphGetError", CultureInfo.CurrentCulture));
             while (true)
             {
                 if (htmlDocument.DocumentNode.SelectSingleNode(paragraphElement) != null)
@@ -128,7 +128,7 @@ public class MultiThreadingBookDownloader
                     paragraphHtmlNode = htmlDocument.DocumentNode.SelectSingleNode(paragraphElement);
                     break;
                 }
-                Console.WriteLine(url + GlobalStrings.ResourceManager.GetString("paragraphGetError", CultureInfo.CurrentCulture));
+                Console.WriteLine(url + Resources.GlobalResources.ResourceManager.GetString("paragraphGetError", CultureInfo.CurrentCulture));
             }
         }
 
