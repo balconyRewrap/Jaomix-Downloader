@@ -138,6 +138,9 @@
   <data name="bookUrl" xml:space="preserve">
     <value>Введите url адрес страницы с книгой, например https://jaomix.ru/category/prepodobnyj-gu/</value>
   </data>
+  <data name="chapterLinksNumber" xml:space="preserve">
+    <value>Количество ссылок на главы - </value>
+  </data>
   <data name="choicerInitHeader" xml:space="preserve">
     <value>Выберите нужную вам функцию:
 Введите 1, если необходим скачиватель глав быстрый
@@ -171,5 +174,10 @@
   </data>
   <data name="paragraphGetError" xml:space="preserve">
     <value>Попытка получить параграф по данному адресу не получила ничего. Возможно, сайт упал или нет соединения. Повторяю попытку. Если данное сообщение будет выводиться слишком часто, закройти программу</value>
+  </data>
+  <data name="parseLinksAgain" xml:space="preserve">
+    <value>Необходимо ли повторить поиск ссылок?
+Нажмите ENTER, если нет необходимости
+Введите 1, если необходимо</value>
   </data>
 </root>

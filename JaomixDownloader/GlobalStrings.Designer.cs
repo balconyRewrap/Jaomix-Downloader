@@ -59,5 +59,191 @@ namespace JaomixDownloader {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Author&apos;s Name.
+        /// </summary>
+        internal static string authorName {
+            get {
+                return ResourceManager.GetString("authorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the name of the .epub file, for example text.epub
+        ///!PLEASE, USE ONLY ENGLISH SYMBOLS IN NAME!.
+        /// </summary>
+        internal static string bookFileNameEPUB {
+            get {
+                return ResourceManager.GetString("bookFileNameEPUB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the name of the file (without .txt) where the book will be written
+        ///!PLEASE, USE ONLY ENGLISH SYMBOLS IN NAME!.
+        /// </summary>
+        internal static string bookFileNameNoExtensions {
+            get {
+                return ResourceManager.GetString("bookFileNameNoExtensions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the name of the .txt file, for example text.txt
+        ///!PLEASE, USE ONLY ENGLISH SYMBOLS IN NAME!.
+        /// </summary>
+        internal static string bookFileNameTXT {
+            get {
+                return ResourceManager.GetString("bookFileNameTXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Book Title.
+        /// </summary>
+        internal static string bookName {
+            get {
+                return ResourceManager.GetString("bookName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Book .txt file created successfully.
+        /// </summary>
+        internal static string bookTxtMakeSuccess {
+            get {
+                return ResourceManager.GetString("bookTxtMakeSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the url of the book&apos;s webpage.
+        /// </summary>
+        internal static string bookUrl {
+            get {
+                return ResourceManager.GetString("bookUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to chapter hasn&apos;t been deleted on this path:.
+        /// </summary>
+        internal static string chapterFileRemoveFailure {
+            get {
+                return ResourceManager.GetString("chapterFileRemoveFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of links to chapters - .
+        /// </summary>
+        internal static string chapterLinksNumber {
+            get {
+                return ResourceManager.GetString("chapterLinksNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose the function you need:
+        ///Enter 1, if you need a fast chapter downloader
+        ///Enter 2, if you need a link parser
+        ///Enter 3, if you need a slow chapter downloader
+        ///Enter 4, if you need a txt to epub converter
+        ///Enter 5, if you need to change the active folder of the program
+        ///Enter 6, if you need to change language
+        ///Enter 0, if you need to close program
+        ///.
+        /// </summary>
+        internal static string choicerInitHeader {
+            get {
+                return ResourceManager.GetString("choicerInitHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the path for the active folder (it will contain all files), for example C:\folder\
+        ///!PLEASE, USE ONLY ENGLISH SYMBOLS IN PATH!.
+        /// </summary>
+        internal static string configActiveFolder {
+            get {
+                return ResourceManager.GetString("configActiveFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Should the program save the .txt files of each chapter?
+        ///Press ENTER, if shouldn&apos;t save
+        ///Enter 1, if should save.
+        /// </summary>
+        internal static string delTempFiles {
+            get {
+                return ResourceManager.GetString("delTempFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What output file is required?
+        ///Press ENTER if .epub is needed
+        ///Enter 1, if .txt is needed.
+        /// </summary>
+        internal static string finalFileExtension {
+            get {
+                return ResourceManager.GetString("finalFileExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Выберите язык программы
+        ///Choose the language of the program
+        ///Выберите 1, если необходим русский
+        ///Enter 2, if english is needed.
+        /// </summary>
+        internal static string langGiverHead {
+            get {
+                return ResourceManager.GetString("langGiverHead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the name of the file (with .txt) with links.
+        ///It must be in the active folder of the program..
+        /// </summary>
+        internal static string linksFileName {
+            get {
+                return ResourceManager.GetString("linksFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a name (with .txt) for the file where the links will be saved.
+        ///The file will be saved to the active folder of the program.
+        ///!PLEASE, USE ONLY ENGLISH SYMBOLS IN NAME!.
+        /// </summary>
+        internal static string linksFileNameNew {
+            get {
+                return ResourceManager.GetString("linksFileNameNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attempt to get the paragraph at the given url got nothing. Perhaps there are problems with the site or there is no connection. I try again. If this message appears too often, close the program.
+        /// </summary>
+        internal static string paragraphGetError {
+            get {
+                return ResourceManager.GetString("paragraphGetError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Need to search for links again?
+        ///Press ENTER, if not needed
+        ///Enter 1, if needed.
+        /// </summary>
+        internal static string parseLinksAgain {
+            get {
+                return ResourceManager.GetString("parseLinksAgain", resourceCulture);
+            }
+        }
     }
 }

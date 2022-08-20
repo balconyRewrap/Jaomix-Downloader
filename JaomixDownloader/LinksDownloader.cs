@@ -5,8 +5,27 @@ using System.Globalization;
 namespace JaomixDownloader;
 public class LinksDownloader
 {
-    // TODO: Сделать проверку на количество на правильное количество ссылок (спросить у юзера)
     private const string LinksSelectionElementXpath = "/html/body/div[1]/div[3]/div/div/div/div/div[2]/div[2]/div/div[1]/select";
+
+    public static void ParseLinksToFile(string url, string folder)
+    {
+        Console.WriteLine(GlobalStrings.ResourceManager.GetString("linksFileNameNew", CultureInfo.CurrentCulture));
+        string path = folder + Console.ReadLine();
+        var urls = ParseLinks(url);
+        while(true)
+        {
+            Console.WriteLine(
+                GlobalStrings.ResourceManager.GetString("chapterLinksNumber", CultureInfo.CurrentCulture) + urls.Count);
+            Console.WriteLine(GlobalStrings.ResourceManager.GetString("parseLinksAgain", CultureInfo.CurrentCulture));
+            if (Console.ReadLine() != "1")
+            {
+                break;
+            }
+
+            urls = ParseLinks(url);
+        }
+        FileMaker.MakeLinksFile(urls, path);
+    }
 
     private static List<string> ParseLinks(string url)
     {
@@ -110,13 +129,5 @@ public class LinksDownloader
             Thread.Sleep(1000);
             Console.WriteLine(k);
         }
-    }
-
-    public static void ParseLinksToFile(string url, string folder)
-    {
-        Console.WriteLine(GlobalStrings.ResourceManager.GetString("linksFileNameNew", CultureInfo.CurrentCulture));
-        string path = folder + Console.ReadLine();
-        var urls = ParseLinks(url);
-        FileMaker.MakeLinksFile(urls, path);
     }
 }
