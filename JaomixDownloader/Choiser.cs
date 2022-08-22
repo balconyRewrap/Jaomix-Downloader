@@ -29,9 +29,12 @@ internal class Choiser
                     ChooseTxtToEpubConverter(folder);
                     break;
                 case "5":
-                    ChooseActiveFolderChange(folder);
+                    YamlnTxtBookMaker(folder);
                     break;
                 case "6":
+                    ChooseActiveFolderChange(folder);
+                    break;
+                case "7":
                     ChooseLanguageChange(folder);
                     break;
                 case "0":
@@ -147,5 +150,16 @@ internal class Choiser
         string bookFileEpub = folder + Console.ReadLine();
 
         TxtToEpubConverter.Convert(bookFileTxt, bookFileEpub);
+    }
+
+    private static void YamlnTxtBookMaker(string folder)
+    {
+        var book = new Book();
+
+        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("bookFileNameNoExtensions", CultureInfo.CurrentCulture));
+        book.textFileName = folder + Console.ReadLine();
+        book.MetadataFilePath = folder + "metadata.yaml";
+
+        TxtToEpubConverter.MakeBook(book);
     }
 }

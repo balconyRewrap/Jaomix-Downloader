@@ -27,8 +27,8 @@ public class MultiThreadingBookDownloader
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("2");
-                    Console.WriteLine(e);
+                    // Console.WriteLine("2");
+                    // Console.WriteLine(e);
                 }
             }
 
