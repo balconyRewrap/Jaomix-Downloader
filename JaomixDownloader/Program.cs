@@ -14,7 +14,7 @@ internal class Program
         Thread.CurrentThread.CurrentCulture = new CultureInfo(language);
         string folder = configGiver.GiveActiveFolderPath();
         Choiser.Init(folder);
-        Console.WriteLine("PROGRAM FINISHED");
+        Console.WriteLine(@"PROGRAM FINISHED");
         Console.ReadKey();
     }
 

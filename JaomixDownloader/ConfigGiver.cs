@@ -45,10 +45,7 @@ internal class ConfigGiver
 
     public string GiveProgramLanguage()
     {
-        string userLanguage = ConfigurationManager.AppSettings.Get("language");
-
-
-        if (userLanguage == null) userLanguage = CreateProgramLanguage();
+        string userLanguage = ConfigurationManager.AppSettings.Get("language") ?? CreateProgramLanguage();
 
         return userLanguage;
     }
