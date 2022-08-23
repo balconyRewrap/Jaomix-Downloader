@@ -28,13 +28,16 @@ internal class Choiser
                     ChooseTxtToEpubConverter(folder);
                     break;
                 case "5":
-                    YamlnTxtBookMaker(folder);
+                    ChooseYamlnTxtBookMaker(folder);
                     break;
                 case "6":
-                    ChooseActiveFolderChange(folder);
+                    ChooseActiveFolderChange();
                     break;
                 case "7":
-                    ChooseLanguageChange(folder);
+                    ChooseLanguageChange();
+                    break;
+                case "8":
+                    ChooseOSChange();
                     break;
                 case "0":
                     Environment.Exit(0);
@@ -79,8 +82,18 @@ internal class Choiser
 
         bookDownloader.MakeBook(downloaderParamsSaver);
 
-        if (finalFileType != "1") TxtToEpubConverter.MakeBook(book);
+        if (finalFileType != "1")
+        {
+            TxtToEpubConverter txtToEpubConverter = new TxtToEpubConverter();
+            txtToEpubConverter.MakeBook(book);
+        }
 
+    }
+
+    private static void ChooseLinksParser(string folder)
+    {
+        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("bookUrl", CultureInfo.CurrentCulture));
+        LinksDownloader.ParseLinksToFile(Console.ReadLine(), folder);
     }
 
     private static void ChooseSlowBookDownload(string folder)
@@ -98,10 +111,10 @@ internal class Choiser
         var bookMetadata = new JaomixMetadata();
 
         book.Title = bookMetadata.GiveBookName(mainPageUrl);
-        book.AuthorName=bookMetadata.GiveAuthorName(mainPageUrl);
-        book.Description=bookMetadata.GiveBookDescription(mainPageUrl);
+        book.AuthorName = bookMetadata.GiveAuthorName(mainPageUrl);
+        book.Description = bookMetadata.GiveBookDescription(mainPageUrl);
 
-        FileMaker.MetaDataYamlFileMaker(folder,book.Title,book.AuthorName,book.Description);
+        FileMaker.MetaDataYamlFileMaker(folder, book.Title, book.AuthorName, book.Description);
         book.MetadataFilePath = folder + "metadata.yaml";
 
 
@@ -115,29 +128,11 @@ internal class Choiser
 
         bookDownloader.MakeBook(downloaderParamsSaver);
 
-        if (finalFileType != "1") TxtToEpubConverter.MakeBook(book);
-    }
-
-    private static void ChooseLinksParser(string folder)
-    {
-        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("bookUrl", CultureInfo.CurrentCulture));
-        LinksDownloader.ParseLinksToFile(Console.ReadLine(), folder);
-    }
-
-    private static void ChooseActiveFolderChange(string folder)
-    {
-        ConfigGiver configGiver = new ConfigGiver();
-
-        configGiver.ChangeActiveFolderPath();
-    }
-
-    private static void ChooseLanguageChange(string folder)
-    {
-        ConfigGiver configGiver = new ConfigGiver();
-
-        configGiver.ChangeProgramLanguage();
-        string language = configGiver.GiveProgramLanguage();
-        Thread.CurrentThread.CurrentCulture = new CultureInfo(language);
+        if (finalFileType != "1")
+        {
+            TxtToEpubConverter txtToEpubConverter = new TxtToEpubConverter();
+            txtToEpubConverter.MakeBook(book);
+        }
     }
 
     private static void ChooseTxtToEpubConverter(string folder)
@@ -148,10 +143,11 @@ internal class Choiser
         Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("bookFileNameEPUB", CultureInfo.CurrentCulture));
         string bookFileEpub = folder + Console.ReadLine();
 
-        TxtToEpubConverter.Convert(bookFileTxt, bookFileEpub);
+        TxtToEpubConverter txtToEpubConverter = new TxtToEpubConverter();
+        txtToEpubConverter.Convert(bookFileTxt, bookFileEpub);
     }
 
-    private static void YamlnTxtBookMaker(string folder)
+    private static void ChooseYamlnTxtBookMaker(string folder)
     {
         var book = new Book();
 
@@ -159,6 +155,29 @@ internal class Choiser
         book.textFileName = folder + Console.ReadLine();
         book.MetadataFilePath = folder + "metadata.yaml";
 
-        TxtToEpubConverter.MakeBook(book);
+        TxtToEpubConverter txtToEpubConverter = new TxtToEpubConverter();
+        txtToEpubConverter.MakeBook(book);
     }
+
+    private static void ChooseActiveFolderChange()
+    {
+        ConfigGiver configGiver = new ConfigGiver();
+        configGiver.ChangeActiveFolderPath();
+    }
+
+    private static void ChooseLanguageChange()
+    {
+        ConfigGiver configGiver = new ConfigGiver();
+        configGiver.ChangeProgramLanguage();
+
+        string language = configGiver.GiveProgramLanguage();
+        Thread.CurrentThread.CurrentCulture = new CultureInfo(language);
+    }
+
+    private static void ChooseOSChange()
+    {
+        ConfigGiver configGiver = new ConfigGiver();
+        configGiver.ChangeOS();
+    }
+
 }

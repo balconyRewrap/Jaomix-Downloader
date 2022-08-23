@@ -149,7 +149,8 @@
 Введите 4, если необходим конвертер из txt в epub
 Введите 5, если необходимо сделать Epub из .txt + .yaml
 Введите 6, если необходимо поменять активную папку программы
-Нажмите 7, если необходимо сменить язык / Enter 6, if you need to change language
+Введите 7, если необходимо сменить язык / Enter 6, if you need to change language
+Введите 8, если необходимо сменить выбор операционной системы
 Введите 0, если необходимо выйти</value>
   </data>
   <data name="configActiveFolder" xml:space="preserve">
@@ -172,6 +173,11 @@
   <data name="linksFileNameNew" xml:space="preserve">
     <value>Введите имя (с .txt) для файла, куда сохраняться ссылки.
 Файл будет сохранен в активную папку программы.</value>
+  </data>
+  <data name="OSGiverHead" xml:space="preserve">
+    <value>Операционная система:
+Нажмите ENTER, если Windows
+Введите 1, если Linux</value>
   </data>
   <data name="paragraphGetError" xml:space="preserve">
     <value>Попытка получить параграф по данному адресу не получила ничего. Возможно, сайт упал или нет соединения. Повторяю попытку. Если данное сообщение будет выводиться слишком часто, закройти программу</value>

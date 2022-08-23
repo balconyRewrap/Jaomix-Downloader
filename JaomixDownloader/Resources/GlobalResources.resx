@@ -150,10 +150,11 @@ Enter 4, if you need a Txt to Epub Converter
 Enter 5, if you need a Book Maker
 Enter 6, if you need to change The Active Folder of the Program
 Enter 7, if you need to change Language
+Enter 8, if you need to change Operating System Choice
 Enter 0, if you need to close Program
 </value>
   </data>
-  <data name="configActiveFolder" xml:space="preserve">
+  <data name="configActiveFolderWindows" xml:space="preserve">
     <value>Enter the path for the active folder (it will contain all files), for example C:\folder\
 !PLEASE, USE ONLY ENGLISH SYMBOLS IN PATH!</value>
   </data>
@@ -195,5 +196,14 @@ The file will be saved to the active folder of the program.
     <value>Need to search for links again?
 Press ENTER, if not needed
 Enter 1, if needed</value>
+  </data>
+  <data name="configActiveFolderLinux" xml:space="preserve">
+    <value>Enter the path for the active folder (it will contain all files), for example /home/user/folder/
+!PLEASE, USE ONLY ENGLISH SYMBOLS IN PATH!</value>
+  </data>
+  <data name="OSGiverHead" xml:space="preserve">
+    <value>Operating System:
+Press ENTER if Windows
+Enter 1, if Linux</value>
   </data>
 </root>

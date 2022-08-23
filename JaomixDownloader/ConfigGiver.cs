@@ -15,8 +15,20 @@ internal class ConfigGiver
 
     private string CreateActiveFolderPath()
     {
+
         var currentConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("configActiveFolder", CultureInfo.CurrentCulture));
+        string os = GiveOS();
+        switch (os)
+        {
+            case "windows":
+                Console.WriteLine(
+                Resources.GlobalResources.ResourceManager.GetString("configActiveFolderWindows", CultureInfo.CurrentCulture));
+                break;
+            case "linux":
+                Console.WriteLine(
+                    Resources.GlobalResources.ResourceManager.GetString("configActiveFolderLinux", CultureInfo.CurrentCulture));
+                break;
+        }
         string newActiveFolderDirectory = Console.ReadLine();
         // добавляем позицию в раздел AppSettings
         currentConfig.AppSettings.Settings.Add("folder_directory", newActiveFolderDirectory);
@@ -31,8 +43,18 @@ internal class ConfigGiver
     public void ChangeActiveFolderPath()
     {
         var currentConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-        Console.WriteLine(
-            Resources.GlobalResources.ResourceManager.GetString("configActiveFolder", CultureInfo.CurrentCulture));
+        string os = GiveOS();
+        switch (os)
+        {
+            case "windows":
+                Console.WriteLine(
+                    Resources.GlobalResources.ResourceManager.GetString("configActiveFolderWindows", CultureInfo.CurrentCulture));
+                break;
+            case "linux":
+                Console.WriteLine(
+                    Resources.GlobalResources.ResourceManager.GetString("configActiveFolderLinux", CultureInfo.CurrentCulture));
+                break;
+        }
         string folderDirectoryReadLine = Console.ReadLine();
         // открываем текущий конфиг специальным обьектом
         currentConfig.AppSettings.Settings["folder_directory"].Value = folderDirectoryReadLine;
@@ -103,5 +125,54 @@ internal class ConfigGiver
         ConfigurationManager.RefreshSection("appSettings");
 
         Console.WriteLine(ConfigurationManager.AppSettings.Get("language"));
+    }
+    public static string GiveOS()
+    {
+        string OS = ConfigurationManager.AppSettings.Get("operatingSystem") ?? CreateOS();
+        return OS;
+    }
+    private static string CreateOS()
+    {
+        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("OSGiverHead", CultureInfo.CurrentCulture));
+        // стандартное значение
+        string OS = "windows";
+        Console.WriteLine("");
+        string OSChoice = Console.ReadLine();
+        if (OSChoice == "1")
+        {
+            OS = "linux";
+        }
+
+        // открываем текущий конфиг специальным обьектом
+        var currentConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+        // добавляем позицию в раздел AppSettings
+        currentConfig.AppSettings.Settings.Add("operatingSystem", OS);
+        //сохраняем
+        currentConfig.Save(ConfigurationSaveMode.Full);
+        //принудительно перезагружаем соотвествующую секцию
+        ConfigurationManager.RefreshSection("appSettings");
+        string userOS = ConfigurationManager.AppSettings.Get("operatingSystem");
+        return userOS;
+    }
+    public void ChangeOS()
+    {
+        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("OSGiverHead", CultureInfo.CurrentCulture));
+        // стандартное значение
+        string OS = "windows";
+        Console.WriteLine("");
+        string OSChoice = Console.ReadLine();
+        if (OSChoice == "1")
+        {
+            OS = "linux";
+        }
+
+        // открываем текущий конфиг специальным обьектом
+        var currentConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+        currentConfig.AppSettings.Settings["operatingSystem"].Value = OS;
+        currentConfig.Save(ConfigurationSaveMode.Modified);
+        //принудительно перезагружаем соотвествующую секцию
+        ConfigurationManager.RefreshSection("appSettings");
+
+        Console.WriteLine(ConfigurationManager.AppSettings.Get("operatingSystem"));
     }
 }

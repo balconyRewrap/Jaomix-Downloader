@@ -153,6 +153,7 @@ namespace JaomixDownloader.Resources {
         ///Enter 5, if you need a Book Maker
         ///Enter 6, if you need to change The Active Folder of the Program
         ///Enter 7, if you need to change Language
+        ///Enter 8, if you need to change Operating System Choice
         ///Enter 0, if you need to close Program
         ///.
         /// </summary>
@@ -163,12 +164,22 @@ namespace JaomixDownloader.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter the path for the active folder (it will contain all files), for example /home/user/folder/
+        ///!PLEASE, USE ONLY ENGLISH SYMBOLS IN PATH!.
+        /// </summary>
+        internal static string configActiveFolderLinux {
+            get {
+                return ResourceManager.GetString("configActiveFolderLinux", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter the path for the active folder (it will contain all files), for example C:\folder\
         ///!PLEASE, USE ONLY ENGLISH SYMBOLS IN PATH!.
         /// </summary>
-        internal static string configActiveFolder {
+        internal static string configActiveFolderWindows {
             get {
-                return ResourceManager.GetString("configActiveFolder", resourceCulture);
+                return ResourceManager.GetString("configActiveFolderWindows", resourceCulture);
             }
         }
         
@@ -224,6 +235,17 @@ namespace JaomixDownloader.Resources {
         internal static string linksFileNameNew {
             get {
                 return ResourceManager.GetString("linksFileNameNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operating System:
+        ///Press ENTER if Windows
+        ///Enter 1, if Linux.
+        /// </summary>
+        internal static string OSGiverHead {
+            get {
+                return ResourceManager.GetString("OSGiverHead", resourceCulture);
             }
         }
         
