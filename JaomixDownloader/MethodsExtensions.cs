@@ -16,7 +16,7 @@
         {
             url = url.Split("/")[4];
             string[] uChars = { "\\", "|", "/", ":", "*", "?", Convert.ToString('"'), "<", ">","-" };
-            foreach (var uChar in uChars)
+            foreach (string uChar in uChars)
             { 
                 url = url.Replace(uChar, " ");
             }

@@ -121,13 +121,12 @@
     <value>Введите имя автора</value>
   </data>
   <data name="bookFileNameEPUB" xml:space="preserve">
-    <value>Введите название файла .epub, например text.epub</value>
-  </data>
-  <data name="bookFileNameNoExtensions" xml:space="preserve">
-    <value>Введите название файла (без .txt), куда запишется книга</value>
+    <value>Введите название .epub файла, например text.epub
+!ПОЖАЛУЙСТА, ИСПОЛЬЗУЙТЕ ТОЛЬКО АНГЛИЙСКИЕ СИМВОЛЫ!</value>
   </data>
   <data name="bookFileNameTXT" xml:space="preserve">
-    <value>Введите название файла .txt, например text.txt</value>
+    <value>Введите название файла .txt, например text.txt
+!ПОЖАЛУЙСТА, ИСПОЛЬЗУЙТЕ ТОЛЬКО АНГЛИЙСКИЕ СИМВОЛЫ!</value>
   </data>
   <data name="bookName" xml:space="preserve">
     <value>Введите название книги</value>
@@ -153,9 +152,6 @@
 Введите 8, если необходимо сменить выбор операционной системы
 Введите 0, если необходимо выйти</value>
   </data>
-  <data name="configActiveFolder" xml:space="preserve">
-    <value>Введите путь для активной папки (в ней будут все файлы), например C:\folder\</value>
-  </data>
   <data name="delTempFiles" xml:space="preserve">
     <value>Необходимо ли вам оставлять .txt файлы каждой главы?
 Нажмите ENTER, если не необходимо
@@ -172,7 +168,8 @@
   </data>
   <data name="linksFileNameNew" xml:space="preserve">
     <value>Введите имя (с .txt) для файла, куда сохраняться ссылки.
-Файл будет сохранен в активную папку программы.</value>
+Файл будет сохранен в активную папку программы
+!ПОЖАЛУЙСТА, ИСПОЛЬЗУЙТЕ ТОЛЬКО АНГЛИЙСКИЕ СИМВОЛЫ!</value>
   </data>
   <data name="OSGiverHead" xml:space="preserve">
     <value>Операционная система:
@@ -186,5 +183,15 @@
     <value>Необходимо ли повторить поиск ссылок?
 Нажмите ENTER, если нет необходимости
 Введите 1, если необходимо</value>
+  </data>
+  <data name="linkWriteInFileError" xml:space="preserve">
+    <value>не был записан в файл</value>
+  </data>
+  <data name="chapterFileRemoveFailure" xml:space="preserve">
+    <value>глава не была удалена по следующему пути:</value>
+  </data>
+  <data name="bookFileNameNoExtensions" xml:space="preserve">
+    <value>Введите название файла (ввести без расширения) куда будет записана книга
+!ПОЖАЛУЙСТА, ИСПОЛЬЗУЙТЕ ТОЛЬКО АНГЛИЙСКИЕ СИМВОЛЫ!</value>
   </data>
 </root>

@@ -7,12 +7,12 @@ public class SlowBookDownloader
     public void MakeBook(SlowDownloaderParamsSaver slowDownloaderParamsSaver)
     {
         int chapterCount = 1;
-        JaomixMetadata titleGiver = new JaomixMetadata();
+        var titleGiver = new JaomixMetadata();
         foreach (string chapterLink in slowDownloaderParamsSaver.ChaptersLinks)
         {
             string rawText = GiveChapterRawText(chapterLink, titleGiver);
             string text = GiveChapterNormalizedText(rawText);
-            FileMaker.MakeBookFile(text, slowDownloaderParamsSaver.textFileName + ".txt");
+            FileMaker.MakeBookFile(text, slowDownloaderParamsSaver.FileName + ".txt");
             Console.WriteLine(chapterCount);
             chapterCount++;
         }

@@ -139,7 +139,7 @@
     <value>Book .txt file created successfully</value>
   </data>
   <data name="bookUrl" xml:space="preserve">
-    <value>Enter the url of the book's webpage</value>
+    <value>Enter the url of the book's webpage, for example https://jaomix.ru/category/prepodobnyj-gu/</value>
   </data>
   <data name="choicerInitHeader" xml:space="preserve">
     <value>Choose the function you need:
@@ -151,12 +151,12 @@ Enter 5, if you need a Book Maker
 Enter 6, if you need to change The Active Folder of the Program
 Enter 7, if you need to change Language
 Enter 8, if you need to change Operating System Choice
-Enter 0, if you need to close Program
-</value>
+Enter 0, if you need to close Program</value>
   </data>
   <data name="configActiveFolderWindows" xml:space="preserve">
     <value>Enter the path for the active folder (it will contain all files), for example C:\folder\
 !PLEASE, USE ONLY ENGLISH SYMBOLS IN PATH!</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="delTempFiles" xml:space="preserve">
     <value>Should the program save the .txt files of each chapter?
@@ -173,6 +173,7 @@ Enter 1, if .txt is needed</value>
 Choose the language of the program
 Выберите 1, если необходим русский
 Enter 2, if english is needed</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="linksFileName" xml:space="preserve">
     <value>Enter the name of the file (with .txt) with links.
@@ -200,10 +201,26 @@ Enter 1, if needed</value>
   <data name="configActiveFolderLinux" xml:space="preserve">
     <value>Enter the path for the active folder (it will contain all files), for example /home/user/folder/
 !PLEASE, USE ONLY ENGLISH SYMBOLS IN PATH!</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="OSGiverHead" xml:space="preserve">
     <value>Operating System:
 Press ENTER if Windows
 Enter 1, if Linux</value>
+  </data>
+  <data name="linkWriteInFileError" xml:space="preserve">
+    <value>isn't written in file</value>
+  </data>
+  <data name="linksListMakerFinish" xml:space="preserve">
+	  <value>LINKS LIST MAKER FINISHED</value>
+  </data>
+  <data name="linksListMakerStart" xml:space="preserve">
+	  <value>LINKS LIST MAKER STARTED</value>
+  </data>
+  <data name="bookMakerStart" xml:space="preserve">
+	  <value>BOOK MAKER STARTED</value>
+  </data>
+  <data name="bookMakerFinish" xml:space="preserve">
+	  <value>BOOK MAKER FINISHED</value>
   </data>
 </root>

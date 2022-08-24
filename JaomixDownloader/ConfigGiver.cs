@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using System.Globalization;
+#pragma warning disable CS8600
 
 namespace JaomixDownloader;
 
@@ -78,8 +79,8 @@ internal class ConfigGiver
         // стандартное значение
         string lang = "en-US";
         Console.WriteLine("");
-        string langchoice = Console.ReadLine();
-        switch (langchoice)
+        string langChoice = Console.ReadLine();
+        switch (langChoice)
         {
             case "1":
                 lang = "ru";
@@ -107,8 +108,8 @@ internal class ConfigGiver
         Console.WriteLine(
             Resources.GlobalResources.ResourceManager.GetString("langGiverHead", CultureInfo.CurrentCulture));
         string lang = "en-US";
-        string langchoice = Console.ReadLine();
-        switch (langchoice)
+        string langСhoice = Console.ReadLine();
+        switch (langСhoice)
         {
             case "1":
                 lang = "ru";
@@ -128,25 +129,25 @@ internal class ConfigGiver
     }
     public static string GiveOS()
     {
-        string OS = ConfigurationManager.AppSettings.Get("operatingSystem") ?? CreateOS();
-        return OS;
+        string os = ConfigurationManager.AppSettings.Get("operatingSystem") ?? CreateOS();
+        return os;
     }
     private static string CreateOS()
     {
         Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("OSGiverHead", CultureInfo.CurrentCulture));
         // стандартное значение
-        string OS = "windows";
+        string os = "windows";
         Console.WriteLine("");
-        string OSChoice = Console.ReadLine();
-        if (OSChoice == "1")
+        string osChoice = Console.ReadLine();
+        if (osChoice == "1")
         {
-            OS = "linux";
+            os = "linux";
         }
 
         // открываем текущий конфиг специальным обьектом
         var currentConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
         // добавляем позицию в раздел AppSettings
-        currentConfig.AppSettings.Settings.Add("operatingSystem", OS);
+        currentConfig.AppSettings.Settings.Add("operatingSystem", os);
         //сохраняем
         currentConfig.Save(ConfigurationSaveMode.Full);
         //принудительно перезагружаем соотвествующую секцию
@@ -158,17 +159,17 @@ internal class ConfigGiver
     {
         Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("OSGiverHead", CultureInfo.CurrentCulture));
         // стандартное значение
-        string OS = "windows";
+        string os = "windows";
         Console.WriteLine("");
-        string OSChoice = Console.ReadLine();
-        if (OSChoice == "1")
+        string osChoice = Console.ReadLine();
+        if (osChoice == "1")
         {
-            OS = "linux";
+            os = "linux";
         }
 
         // открываем текущий конфиг специальным обьектом
         var currentConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-        currentConfig.AppSettings.Settings["operatingSystem"].Value = OS;
+        currentConfig.AppSettings.Settings["operatingSystem"].Value = os;
         currentConfig.Save(ConfigurationSaveMode.Modified);
         //принудительно перезагружаем соотвествующую секцию
         ConfigurationManager.RefreshSection("appSettings");

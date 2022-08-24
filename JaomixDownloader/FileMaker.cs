@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using JaomixDownloader.Resources;
 using YamlDotNet.RepresentationModel;
 
 
@@ -7,13 +8,14 @@ public class FileMaker
 {
     public static void MakeLinksFile(List<string> urls, string path)
     {
-        Console.WriteLine("LINKS LIST MAKER STARTED");
+        Console.WriteLine(GlobalResources.linksListMakerStart);
 
         urls.Reverse();
         var linksList = new List<string>();
-        foreach (string element in urls)
-            if (!linksList.Contains(element))
-                linksList.Add(element);
+        foreach (string element in urls.Where(element => !linksList.Contains(element)))
+        {
+            linksList.Add(element);
+        }
         var linksListFile = new StreamWriter(path, true, Encoding.UTF8);
         foreach (string element in linksList)
         {
@@ -24,17 +26,17 @@ public class FileMaker
             }
             catch
             {
-                Console.WriteLine("Не был записан в файл " + element);
+                Console.WriteLine(element + GlobalResources.linkWriteInFileError);
             }
         }
 
         linksListFile.Close();
-        Console.WriteLine("LINKS LIST MAKER FINISHED");
+        Console.WriteLine(GlobalResources.linksListMakerFinish);
     }
 
     public static void MakeBookFile(string text, string path)
     {
-        Console.WriteLine("BOOK MAKER STARTED");
+        Console.WriteLine(GlobalResources.bookMakerStart);
         var textFile = new StreamWriter(path, true, Encoding.UTF8);
 
         try
@@ -43,11 +45,11 @@ public class FileMaker
         }
         catch
         {
-            Console.WriteLine("Не был записан в файл ");
+            Console.WriteLine(GlobalResources.linkWriteInFileError);
         }
 
         textFile.Close();
-        Console.WriteLine("BOOK MAKER FINISHED");
+        Console.WriteLine(GlobalResources.bookMakerFinish);
     }
 
     public static void MakeChapterFile(string text, string path)
@@ -60,13 +62,13 @@ public class FileMaker
         }
         catch
         {
-            Console.WriteLine("Не был записан в файл ");
+            Console.WriteLine(GlobalResources.linkWriteInFileError);
         }
 
         textFile.Close();
     }
 
-    public static void MetaDataYamlFileMaker(string folder, string bookName, string authorName, string description)
+    public static void MetaDataYamlFileMaker(string folder, MetadataFileYamlFileParamsSaver metadataFileYamlFile)
     {
         const string initialContent = "---\nversion: 1\n...";
 
@@ -77,17 +79,17 @@ public class FileMaker
 
         var titleProps = new YamlMappingNode();
         titleProps.Add("type", "main");
-        titleProps.Add("text", bookName);
+        titleProps.Add("text", metadataFileYamlFile.BookTitle);
         rootMappingNode.Add("title", titleProps);
 
         var authorProps = new YamlMappingNode();
         authorProps.Add("role", "author");
-        authorProps.Add("text", authorName);
+        authorProps.Add("text", metadataFileYamlFile.AuthorName);
         rootMappingNode.Add("creator", authorProps);
 
-        rootMappingNode.Add("description",description);
+        rootMappingNode.Add("description", metadataFileYamlFile.Description);
 
-        using (TextWriter writer = File.CreateText(folder + "metadata.yaml"))
+        using (TextWriter writer = File.CreateText(folder + metadataFileYamlFile.FileName))
         {
             writer.WriteLine("---");
             stream.Save(writer, false);

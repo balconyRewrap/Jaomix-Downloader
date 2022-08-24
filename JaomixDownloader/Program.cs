@@ -9,7 +9,7 @@ internal class Program
     private static void Main(string[] args)
     {
 
-        ConfigGiver configGiver = new ConfigGiver();
+        var configGiver = new ConfigGiver();
         string language = configGiver.GiveProgramLanguage();
         Thread.CurrentThread.CurrentCulture = new CultureInfo(language);
         string folder = configGiver.GiveActiveFolderPath();

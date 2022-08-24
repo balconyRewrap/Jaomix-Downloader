@@ -60,7 +60,7 @@ public class MultiThreadingBookDownloader
             string chapterFilePath = mtDownloaderParamsSaver.Folder + chapterLink.NormalizeUrl() + ".txt";
             string text = File.ReadAllText(chapterFilePath);
         
-            FileMaker.MakeBookFile(text, mtDownloaderParamsSaver.textFileName + ".txt");
+            FileMaker.MakeBookFile(text, mtDownloaderParamsSaver.FileName + ".txt");
             if (mtDownloaderParamsSaver.DelFileSelection != "1")
             {
                 try
@@ -90,8 +90,6 @@ public class MultiThreadingBookDownloader
         JaomixMetadata titleGiver = new JaomixMetadata();
         string title = titleGiver.GiveChapterTitle(url);
 
-        int error = 0;
-
         HtmlNode paragraphHtmlNode;
         // так pandoc (конвертер) распознает название главы
         string text = "\n# " + title + "\n \n \n";
@@ -120,7 +118,7 @@ public class MultiThreadingBookDownloader
         }
         catch (Exception)
         {
-            Console.WriteLine(url+Resources.GlobalResources.ResourceManager.GetString("paragraphGetError", CultureInfo.CurrentCulture));
+            Console.WriteLine(url + Resources.GlobalResources.ResourceManager.GetString("paragraphGetError", CultureInfo.CurrentCulture));
             while (true)
             {
                 if (htmlDocument.DocumentNode.SelectSingleNode(paragraphElement) != null)

@@ -29,21 +29,21 @@ namespace JaomixDownloader
         }
 
 
-        public void MakeBook(Book book)
+        public void MakeBook(BookFile bookFile)
         {
             switch (_os)
             {
                 case "windows":
                 {
-                    string strCmdText = $"/C pandoc {book.BookFileTxt} {book.MetadataFilePath} -o {book.BookFileEpub}";
-                    System.Diagnostics.Process.Start("powershell.exe", strCmdText);
+                    string strCmdText = $"/C pandoc {bookFile.BookFileTxt} {bookFile.MetadataFilePath} -o {bookFile.BookFileEpub}";
+                    Process.Start("powershell.exe", strCmdText);
                     break;
                 }
                 case "linux":
                 {
-                    Process proc = new Process();
+                    var proc = new Process();
                     proc.StartInfo.FileName = "/bin/bash";
-                    proc.StartInfo.Arguments = "-c \" " + $"pandoc {book.BookFileTxt} {book.MetadataFilePath} -o {book.BookFileEpub}" + " \"";
+                    proc.StartInfo.Arguments = "-c \" " + $"pandoc {bookFile.BookFileTxt} {bookFile.MetadataFilePath} -o {bookFile.BookFileEpub}" + " \"";
                     proc.StartInfo.UseShellExecute = false;
                     proc.StartInfo.RedirectStandardOutput = true;
                     proc.Start();

@@ -64,7 +64,7 @@ public class JaomixMetadata
             }
         }
 
-        authorName = authorName.Substring(7);
+        authorName = authorName[7..];
         return authorName;
     }
     

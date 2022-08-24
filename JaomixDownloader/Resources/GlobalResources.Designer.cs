@@ -100,6 +100,24 @@ namespace JaomixDownloader.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BOOK MAKER FINISHED.
+        /// </summary>
+        internal static string bookMakerFinish {
+            get {
+                return ResourceManager.GetString("bookMakerFinish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BOOK MAKER STARTED.
+        /// </summary>
+        internal static string bookMakerStart {
+            get {
+                return ResourceManager.GetString("bookMakerStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter Book Title.
         /// </summary>
         internal static string bookName {
@@ -118,7 +136,7 @@ namespace JaomixDownloader.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the url of the book&apos;s webpage.
+        ///   Looks up a localized string similar to Enter the url of the book&apos;s webpage, for example https://jaomix.ru/category/prepodobnyj-gu/.
         /// </summary>
         internal static string bookUrl {
             get {
@@ -154,8 +172,7 @@ namespace JaomixDownloader.Resources {
         ///Enter 6, if you need to change The Active Folder of the Program
         ///Enter 7, if you need to change Language
         ///Enter 8, if you need to change Operating System Choice
-        ///Enter 0, if you need to close Program
-        ///.
+        ///Enter 0, if you need to close Program.
         /// </summary>
         internal static string choicerInitHeader {
             get {
@@ -235,6 +252,33 @@ namespace JaomixDownloader.Resources {
         internal static string linksFileNameNew {
             get {
                 return ResourceManager.GetString("linksFileNameNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LINKS LIST MAKER FINISHED.
+        /// </summary>
+        internal static string linksListMakerFinish {
+            get {
+                return ResourceManager.GetString("linksListMakerFinish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LINKS LIST MAKER STARTED.
+        /// </summary>
+        internal static string linksListMakerStart {
+            get {
+                return ResourceManager.GetString("linksListMakerStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to isn&apos;t written in file.
+        /// </summary>
+        internal static string linkWriteInFileError {
+            get {
+                return ResourceManager.GetString("linkWriteInFileError", resourceCulture);
             }
         }
         
