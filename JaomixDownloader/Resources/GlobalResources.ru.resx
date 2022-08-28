@@ -148,7 +148,7 @@
 Введите 4, если необходим конвертер из txt в epub
 Введите 5, если необходимо сделать Epub из .txt + .yaml
 Введите 6, если необходимо поменять активную папку программы
-Введите 7, если необходимо сменить язык / Enter 6, if you need to change language
+Введите 7, если необходимо сменить язык / Enter 7, if you need to change language
 Введите 8, если необходимо сменить выбор операционной системы
 Введите 0, если необходимо выйти</value>
   </data>
@@ -193,5 +193,14 @@
   <data name="bookFileNameNoExtensions" xml:space="preserve">
     <value>Введите название файла (ввести без расширения) куда будет записана книга
 !ПОЖАЛУЙСТА, ИСПОЛЬЗУЙТЕ ТОЛЬКО АНГЛИЙСКИЕ СИМВОЛЫ!</value>
+  </data>
+  <data name="InvalidJaomixUrl" xml:space="preserve">
+    <value>Неправильный формат ссылки. Пожалуйста, введите url адрес страницы с книгой, например https://jaomix.ru/category/prepodobnyj-gu/</value>
+  </data>
+  <data name="invalidFolder" xml:space="preserve">
+    <value>Путь до активной папки, который вы дали, некорректен.</value>
+  </data>
+  <data name="invalidTxtFile" xml:space="preserve">
+    <value>Неправильный формат .txt файла. Пожалуйста, введите его снова.</value>
   </data>
 </root>

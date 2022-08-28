@@ -3,9 +3,16 @@ using System.Globalization;
 
 namespace JaomixDownloader;
 
-internal class Choiser
+internal class Chooser
 {
-    public static void Init(string folder)
+    private readonly string _folder;
+    public Chooser(string folder)
+    {
+        _folder = folder;
+        Init();
+    }
+
+    private void Init()
     {
         while (true)
         {
@@ -16,19 +23,19 @@ internal class Choiser
             switch (decision)
             {
                 case "1":
-                    ChooseMultiThreadingBookDownload(folder);
+                    ChooseMultiThreadingBookDownload();
                     break;
                 case "2":
-                    ChooseLinksParser(folder);
+                    ChooseLinksParser();
                     break;
                 case "3":
-                    ChooseSlowBookDownload(folder);
+                    ChooseSlowBookDownload();
                     break;
                 case "4":
-                    ChooseTxtToEpubConverter(folder);
+                    ChooseTxtToEpubConverter();
                     break;
                 case "5":
-                    ChooseYamlnTxtBookMaker(folder);
+                    ChooseYamlplusTxtBookMaker();
                     break;
                 case "6":
                     ChooseActiveFolderChange();
@@ -46,44 +53,48 @@ internal class Choiser
         }
     }
 
-    private static void ChooseMultiThreadingBookDownload(string folder)
+    private void ChooseMultiThreadingBookDownload()
     {
-        var bookDownloader = new MultiThreadingBookDownloader();
-        var downloaderParamsSaver = new MtDownloaderParamsSaver();
+        
+        var downloaderParameters = new MuThDownloaderParameters();
 
 
         Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("linksFileName", CultureInfo.CurrentCulture));
-        string linksFile = folder + Console.ReadLine();
-        downloaderParamsSaver.ChaptersLinks = File.ReadAllLines(linksFile, Encoding.UTF8);
-        string mainPageUrl = downloaderParamsSaver.ChaptersLinks[0].GiveMainUrlFromDerivative();
+        string linksFile = _folder + CorrectDataGiver.GiveValidTxtFile();
+
+        downloaderParameters.ChaptersLinks = File.ReadAllLines(linksFile, Encoding.UTF8);
+        string mainPageUrl = downloaderParameters.ChaptersLinks[0].GiveMainUrlFromDerivative();
 
         var book = new BookFile();
-        var metadataYaml = new MetadataFileYamlFileParamsSaver();
         var bookMetadata = new JaomixMetadata();
 
-        metadataYaml.BookTitle = bookMetadata.GiveBookName(mainPageUrl);
-        metadataYaml.AuthorName = bookMetadata.GiveAuthorName(mainPageUrl);
-        metadataYaml.Description = bookMetadata.GiveBookDescription(mainPageUrl);
-
-        FileMaker.MetaDataYamlFileMaker(folder, metadataYaml);
-        book.MetadataFilePath = folder + metadataYaml.FileName;
+        var metadataYaml = new MetadataYamlFile
+        {
+            BookTitle = bookMetadata.GiveBookName(mainPageUrl),
+            AuthorName = bookMetadata.GiveAuthorName(mainPageUrl),
+            Description = bookMetadata.GiveBookDescription(mainPageUrl),
+        }
+        ;
+        FileMaker.MetaDataYamlFileMaker(_folder, metadataYaml);
+        book.MetadataFilePath = _folder + metadataYaml.FileName;
 
 
         Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("bookFileNameNoExtensions", CultureInfo.CurrentCulture));
-        downloaderParamsSaver.FileName = book.FileName = folder + Console.ReadLine();
+        downloaderParameters.FileName = book.FileName = _folder + Console.ReadLine();
 
         Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("delTempFiles", CultureInfo.CurrentCulture));
-        downloaderParamsSaver.DelFileSelection = Console.ReadLine();
 
-        downloaderParamsSaver.Folder = folder;
+        downloaderParameters.DelFileSelection = (Console.ReadLine() != "1") ? "Delete" : "NotDelete";
+
+        downloaderParameters.Folder = _folder;
 
         Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("finalFileExtension", CultureInfo.CurrentCulture));
-        string finalFileType = Console.ReadLine();
+        string finalFileType = (Console.ReadLine() != "1") ? "epub" : "txt";
 
+        var bookDownloader = new MultiThreadingBookDownloader(downloaderParameters);
+        bookDownloader.MakeBook();
 
-        bookDownloader.MakeBook(downloaderParamsSaver);
-
-        if (finalFileType != "1")
+        if (finalFileType == "epub")
         {
             var txtToEpubConverter = new TxtToEpubConverter();
             txtToEpubConverter.MakeBook(book);
@@ -91,71 +102,73 @@ internal class Choiser
 
     }
 
-    private static void ChooseLinksParser(string folder)
+    private void ChooseLinksParser()
     {
+
         Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("bookUrl", CultureInfo.CurrentCulture));
-        LinksDownloader.ParseLinksToFile(Console.ReadLine(), folder);
+        string bookurl = CorrectDataGiver.GiveValidJaomixLink();
+        LinksDownloader.ParseLinksToFile(Console.ReadLine(), _folder);
     }
 
-    private static void ChooseSlowBookDownload(string folder)
+    private void ChooseSlowBookDownload()
     {
-        var bookDownloader = new SlowBookDownloader();
-        var downloaderParamsSaver = new SlowDownloaderParamsSaver();
+
+        var downloaderParameters = new SlowDownloaderParameters();
 
 
         Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("linksFileName", CultureInfo.CurrentCulture));
-        string linksFile = folder + Console.ReadLine();
-        downloaderParamsSaver.ChaptersLinks = File.ReadAllLines(linksFile, Encoding.UTF8);
-        string mainPageUrl = downloaderParamsSaver.ChaptersLinks[0].GiveMainUrlFromDerivative();
+        string linksFile = _folder + CorrectDataGiver.GiveValidTxtFile();
+        downloaderParameters.ChaptersLinks = File.ReadAllLines(linksFile, Encoding.UTF8);
+        string mainPageUrl = downloaderParameters.ChaptersLinks[0].GiveMainUrlFromDerivative();
 
         var book = new BookFile();
         var bookMetadata = new JaomixMetadata();
-        var metadataYaml = new MetadataFileYamlFileParamsSaver
+        var metadataYaml = new MetadataYamlFile
         {
             BookTitle = bookMetadata.GiveBookName(mainPageUrl),
             AuthorName = bookMetadata.GiveAuthorName(mainPageUrl),
             Description = bookMetadata.GiveBookDescription(mainPageUrl)
         };
 
-        FileMaker.MetaDataYamlFileMaker(folder, metadataYaml);
+        FileMaker.MetaDataYamlFileMaker(_folder, metadataYaml);
 
-        book.MetadataFilePath = folder + metadataYaml.FileName;
+        book.MetadataFilePath = _folder + metadataYaml.FileName;
         Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("bookFileNameNoExtensions", CultureInfo.CurrentCulture));
-        downloaderParamsSaver.FileName = book.FileName = folder + Console.ReadLine();
+        downloaderParameters.FileName = book.FileName = _folder + Console.ReadLine();
 
 
         Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("finalFileExtension", CultureInfo.CurrentCulture));
-        string finalFileType = Console.ReadLine();
+        string finalFileType = (Console.ReadLine() != "1") ? "epub" : "txt";
 
+        var bookDownloader = new SlowBookDownloader(downloaderParameters);
+        bookDownloader.MakeBook();
 
-        bookDownloader.MakeBook(downloaderParamsSaver);
-
-        if (finalFileType != "1")
+        if (finalFileType == "epub")
         {
             var txtToEpubConverter = new TxtToEpubConverter();
             txtToEpubConverter.MakeBook(book);
         }
     }
 
-    private static void ChooseTxtToEpubConverter(string folder)
+    private void ChooseTxtToEpubConverter()
     {
         Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("bookFileNameTXT", CultureInfo.CurrentCulture));
-        string bookFileTxt = folder + Console.ReadLine();
+        string bookFileTxt = _folder + Console.ReadLine();
 
         Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("bookFileNameEPUB", CultureInfo.CurrentCulture));
-        string bookFileEpub = folder + Console.ReadLine();
+        string bookFileEpub = _folder + Console.ReadLine();
 
         var txtToEpubConverter = new TxtToEpubConverter();
         txtToEpubConverter.Convert(bookFileTxt, bookFileEpub);
     }
 
-    private static void ChooseYamlnTxtBookMaker(string folder)
+    private void ChooseYamlplusTxtBookMaker()
     {
         var book = new BookFile();
 
         Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("bookFileNameNoExtensions", CultureInfo.CurrentCulture));
-        book.FileName = folder + Console.ReadLine();
-        book.MetadataFilePath = $"{folder}metadata.yaml";
+        book.FileName = _folder + Console.ReadLine();
+        book.MetadataFilePath = $"{_folder}metadata.yaml";
 
         var txtToEpubConverter = new TxtToEpubConverter();
         txtToEpubConverter.MakeBook(book);

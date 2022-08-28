@@ -30,7 +30,7 @@ internal class ConfigGiver
                     Resources.GlobalResources.ResourceManager.GetString("configActiveFolderLinux", CultureInfo.CurrentCulture));
                 break;
         }
-        string newActiveFolderDirectory = Console.ReadLine();
+        string newActiveFolderDirectory = CorrectDataGiver.GiveValidFolder(os);
         // добавляем позицию в раздел AppSettings
         currentConfig.AppSettings.Settings.Add("folder_directory", newActiveFolderDirectory);
         currentConfig.Save(ConfigurationSaveMode.Full);
@@ -127,11 +127,13 @@ internal class ConfigGiver
 
         Console.WriteLine(ConfigurationManager.AppSettings.Get("language"));
     }
+
     public static string GiveOS()
     {
         string os = ConfigurationManager.AppSettings.Get("operatingSystem") ?? CreateOS();
         return os;
     }
+
     private static string CreateOS()
     {
         Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("OSGiverHead", CultureInfo.CurrentCulture));
@@ -155,6 +157,7 @@ internal class ConfigGiver
         string userOS = ConfigurationManager.AppSettings.Get("operatingSystem");
         return userOS;
     }
+
     public void ChangeOS()
     {
         Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("OSGiverHead", CultureInfo.CurrentCulture));

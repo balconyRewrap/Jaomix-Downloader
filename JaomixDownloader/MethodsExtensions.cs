@@ -2,7 +2,6 @@
 {
     public static class MethodsExtensions
     {
-        // убираю из главы все символы, на которые будет ругаться винда в названиях файлов
         public static string NormalizeTitle(this string title)
         {
             string[] uChars = { "\\", "|", "/", ":", "*", "?", Convert.ToString('"'), "<", ">" };
@@ -34,6 +33,7 @@
                    paragraph.Contains("Переводчик") ||
                    paragraph.Contains("Если вы обнаружите какие-либо ошибки");
         }
+
 
     }
 }

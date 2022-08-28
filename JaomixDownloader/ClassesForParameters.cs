@@ -30,29 +30,25 @@
         public string MetadataFilePath { get; set; }
     }
 
-    public class DownloaderParamsSaver : TextFile
+    public class DownloaderParameters : TextFile
     {
         public string[] ChaptersLinks { get; set; }
     }
 
-    public class SlowDownloaderParamsSaver : DownloaderParamsSaver
+    public class SlowDownloaderParameters : DownloaderParameters
     {
 
     }
 
-    public class MtDownloaderParamsSaver : DownloaderParamsSaver
+    public class MuThDownloaderParameters : DownloaderParameters
     {
         public string Folder { get; set; }
         public string DelFileSelection { get; set; }
     }
 
-    public class MetadataFileYamlFileParamsSaver : MetadataFile
+    public class MetadataYamlFile : MetadataFile
     {
         public string FileName = "metadata.yaml";
-
-        public string BookTitle { get; set; }
-        public string AuthorName { get; set; }
-        public string Description { get; set; }
     }
 
 }

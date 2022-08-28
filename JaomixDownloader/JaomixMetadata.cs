@@ -123,30 +123,4 @@ public class JaomixMetadata
         return chapterTitle;
     }
     
-    public static string GiveChapterTitle(HtmlWeb web, string url)
-    {
-        var htmlDocument = web.Load(url);
-        string chapterTitle;
-        try
-        {
-            chapterTitle = htmlDocument.DocumentNode.SelectSingleNode(ChapterTitleXPath).InnerText;
-        }
-        catch (Exception)
-
-        {
-
-            while (true)
-            {
-                htmlDocument = web.Load(url);
-                Thread.Sleep(4000);
-                if (htmlDocument.DocumentNode.SelectSingleNode(ChapterTitleXPath) != null)
-                {
-                    chapterTitle = htmlDocument.DocumentNode.SelectSingleNode(ChapterTitleXPath).InnerText;
-                    break;
-                }
-
-            }
-        }
-        return chapterTitle;
-    }
 }

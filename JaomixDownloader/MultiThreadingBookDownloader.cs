@@ -5,21 +5,36 @@ namespace JaomixDownloader;
 
 public class MultiThreadingBookDownloader
 {
-    public void MakeBook(MtDownloaderParamsSaver mtDownloaderParamsSaver)
+    private readonly MuThDownloaderParameters _muThDownloaderBook;
+
+    public MultiThreadingBookDownloader(MuThDownloaderParameters muThDownloaderParameters)
     {
+        _muThDownloaderBook = muThDownloaderParameters;
+    }
 
+    public void MakeBook()
+    {
+        ParallelChaptersDownloader();
 
-        Parallel.ForEach(mtDownloaderParamsSaver.ChaptersLinks, chapterLink =>
+        MergeBookChapterFiles();
+
+        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("bookTxtMakeSuccess", CultureInfo.CurrentCulture));
+
+    }
+
+    private void ParallelChaptersDownloader()
+    {
+        Parallel.ForEach(_muThDownloaderBook.ChaptersLinks, chapterLink =>
         {
             Console.WriteLine(chapterLink);
             string chapterFile = chapterLink.NormalizeUrl() + ".txt";
             string chapterRawText = "";
             string chapterText = "";
 
-            
+
             // Регулярно вылетает ошибка, связанная с неправильной загрузкой страницы.
             // Решается простым перезапуском метода
-            while(chapterRawText=="")
+            while (chapterRawText == "")
             {
                 try
                 {
@@ -44,7 +59,7 @@ public class MultiThreadingBookDownloader
 
             try
             {
-                FileMaker.MakeChapterFile(chapterText, mtDownloaderParamsSaver.Folder + chapterFile);
+                FileMaker.MakeChapterFile(chapterText, _muThDownloaderBook.Folder + chapterFile);
             }
             catch (Exception e)
             {
@@ -54,29 +69,6 @@ public class MultiThreadingBookDownloader
 
 
         });
-
-        foreach (string chapterLink in mtDownloaderParamsSaver.ChaptersLinks)
-        {
-            string chapterFilePath = mtDownloaderParamsSaver.Folder + chapterLink.NormalizeUrl() + ".txt";
-            string text = File.ReadAllText(chapterFilePath);
-        
-            FileMaker.MakeBookFile(text, mtDownloaderParamsSaver.FileName + ".txt");
-            if (mtDownloaderParamsSaver.DelFileSelection != "1")
-            {
-                try
-                {
-                    File.Delete(chapterFilePath);
-                }
-                catch
-                {
-                    Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("chapterFileRemoveFailure", CultureInfo.CurrentCulture) + chapterFilePath);
-                }
-        
-            }
-        }
-
-        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("bookTxtMakeSuccess", CultureInfo.CurrentCulture));
-
     }
 
     private string GiveChapterRawText(string url)
@@ -146,5 +138,31 @@ public class MultiThreadingBookDownloader
         }
 
         return text;
+    }
+
+    private void MergeBookChapterFiles()
+    {
+        foreach (string chapterLink in _muThDownloaderBook.ChaptersLinks)
+        {
+            string chapterFilePath = _muThDownloaderBook.Folder + chapterLink.NormalizeUrl() + ".txt";
+            string text = File.ReadAllText(chapterFilePath);
+
+            FileMaker.MakeBookFile(text, _muThDownloaderBook.FileName + ".txt");
+
+            if (_muThDownloaderBook.DelFileSelection == "Delete")
+            {
+                try
+                {
+                    File.Delete(chapterFilePath);
+                }
+                catch
+                {
+                    Console.WriteLine(
+                        Resources.GlobalResources.ResourceManager.GetString("chapterFileRemoveFailure",
+                            CultureInfo.CurrentCulture) + chapterFilePath);
+                }
+            }
+        }
+
     }
 }

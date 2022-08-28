@@ -4,15 +4,21 @@ namespace JaomixDownloader;
 
 public class SlowBookDownloader
 {
-    public void MakeBook(SlowDownloaderParamsSaver slowDownloaderParamsSaver)
+    private readonly SlowDownloaderParameters _book;
+
+    public SlowBookDownloader(SlowDownloaderParameters bookData)
+    {
+        _book = bookData;
+    }
+    public void MakeBook()
     {
         int chapterCount = 1;
         var titleGiver = new JaomixMetadata();
-        foreach (string chapterLink in slowDownloaderParamsSaver.ChaptersLinks)
+        foreach (string chapterLink in _book.ChaptersLinks)
         {
             string rawText = GiveChapterRawText(chapterLink, titleGiver);
             string text = GiveChapterNormalizedText(rawText);
-            FileMaker.MakeBookFile(text, slowDownloaderParamsSaver.FileName + ".txt");
+            FileMaker.MakeBookFile(text, _book.FileName + ".txt");
             Console.WriteLine(chapterCount);
             chapterCount++;
         }

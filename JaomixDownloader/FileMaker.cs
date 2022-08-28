@@ -68,7 +68,7 @@ public class FileMaker
         textFile.Close();
     }
 
-    public static void MetaDataYamlFileMaker(string folder, MetadataFileYamlFileParamsSaver metadataFileYamlFile)
+    public static void MetaDataYamlFileMaker(string folder, MetadataYamlFile metadataYamlFileYamlFile)
     {
         const string initialContent = "---\nversion: 1\n...";
 
@@ -79,17 +79,17 @@ public class FileMaker
 
         var titleProps = new YamlMappingNode();
         titleProps.Add("type", "main");
-        titleProps.Add("text", metadataFileYamlFile.BookTitle);
+        titleProps.Add("text", metadataYamlFileYamlFile.BookTitle);
         rootMappingNode.Add("title", titleProps);
 
         var authorProps = new YamlMappingNode();
         authorProps.Add("role", "author");
-        authorProps.Add("text", metadataFileYamlFile.AuthorName);
+        authorProps.Add("text", metadataYamlFileYamlFile.AuthorName);
         rootMappingNode.Add("creator", authorProps);
 
-        rootMappingNode.Add("description", metadataFileYamlFile.Description);
+        rootMappingNode.Add("description", metadataYamlFileYamlFile.Description);
 
-        using (TextWriter writer = File.CreateText(folder + metadataFileYamlFile.FileName))
+        using (TextWriter writer = File.CreateText(folder + metadataYamlFileYamlFile.FileName))
         {
             writer.WriteLine("---");
             stream.Save(writer, false);

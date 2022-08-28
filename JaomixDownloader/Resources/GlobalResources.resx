@@ -213,14 +213,27 @@ Enter 1, if Linux</value>
   </data>
   <data name="linksListMakerFinish" xml:space="preserve">
 	  <value>LINKS LIST MAKER FINISHED</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="linksListMakerStart" xml:space="preserve">
 	  <value>LINKS LIST MAKER STARTED</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="bookMakerStart" xml:space="preserve">
 	  <value>BOOK MAKER STARTED</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="bookMakerFinish" xml:space="preserve">
 	  <value>BOOK MAKER FINISHED</value>
+    <comment>@Invariant</comment>
+  </data>
+  <data name="InvalidJaomixUrl" xml:space="preserve">
+    <value>Invalid url. Please, enter the url of the book's webpage, for example https://jaomix.ru/category/prepodobnyj-gu/</value>
+  </data>
+  <data name="invalidFolder" xml:space="preserve">
+    <value>Active Folder path, that you enter, is incorrect.</value>
+  </data>
+  <data name="invalidTxtFile" xml:space="preserve">
+    <value>Invalid .txt file. Please write it again.</value>
   </data>
 </root>
