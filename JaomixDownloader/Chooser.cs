@@ -106,8 +106,8 @@ internal class Chooser
     {
 
         Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("bookUrl", CultureInfo.CurrentCulture));
-        string bookurl = CorrectDataGiver.GiveValidJaomixLink();
-        LinksDownloader.ParseLinksToFile(Console.ReadLine(), _folder);
+        string bookUrl = CorrectDataGiver.GiveValidJaomixLink();
+        LinksDownloader.ParseLinksToFile(bookUrl, _folder);
     }
 
     private void ChooseSlowBookDownload()

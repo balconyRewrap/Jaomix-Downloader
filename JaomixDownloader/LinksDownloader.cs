@@ -56,7 +56,7 @@ public class LinksDownloader
     private static string GetHtmlLinksSelectionElement(string url,IWebDriver driver)
     {
         driver.Navigate().GoToUrl(url);
-        string linksSelectionElementInnerHtml = "";
+        string linksSelectionElementInnerHtml;
         try
         {
             // driver.FindElements(
@@ -78,9 +78,10 @@ public class LinksDownloader
                 {
                     linksSelectionElementInnerHtml = optionsElement.GetAttribute("innerHTML");
                 }
-                // В нашем случае баг будет связан с неполной загрузкой страницы и решается ожиданием, потому в catch ничего нет
+                
                 catch
                 {
+                    // В нашем случае баг будет связан с неполной загрузкой страницы и решается ожиданием, потому в catch ничего нет
                 }
             }
         }
@@ -97,20 +98,19 @@ public class LinksDownloader
         string lastOption = linksSelectionElementHtml.Split("<option").Last();
         int digitsCount = 0;
         string chapterSelectionsCount = "0";
-
         foreach (char i in lastOption)
         {
-            bool usl;
+            bool isDigitCheck;
             if (char.IsDigit(i))
             {
                 digitsCount += 1;
                 chapterSelectionsCount += i;
-                usl = true;
+                isDigitCheck = true;
             }
             else
             {
-                usl = false;
-                if (digitsCount > 0 && usl != true) return chapterSelectionsCount;
+                isDigitCheck = false;
+                if (digitsCount > 0 && isDigitCheck == false) return chapterSelectionsCount;
             }
 
             if (digitsCount >= 4) return chapterSelectionsCount;
@@ -118,13 +118,13 @@ public class LinksDownloader
         return chapterSelectionsCount;
     }
 
-    private static void ClickAllLinksSelections(int chapterSelectionsCount, IWebDriver driver)
+    private static void ClickAllLinksSelections(int chapterSelectionsCount, ISearchContext searcher)
     {
         for (int i = 1; i < chapterSelectionsCount + 2; i++)
         {
             string k = Convert.ToString(i);
             var element =
-                driver.FindElement(By.XPath($"/html/body/div/div[3]/div/div/div/div/div[2]/div[2]/div/div[1]/select/option[{k}]"));
+                searcher.FindElement(By.XPath($"/html/body/div/div[3]/div/div/div/div/div[2]/div[2]/div/div[1]/select/option[{k}]"));
             element.Click();
             element.Click();
             Thread.Sleep(1000);

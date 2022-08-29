@@ -48,7 +48,7 @@
 
     public class MetadataYamlFile : MetadataFile
     {
-        public string FileName = "metadata.yaml";
+        public new string FileName = "metadata.yaml";
     }
 
 }
