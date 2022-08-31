@@ -1,9 +1,10 @@
 ﻿using System.Text;
+using JaomixDownloader.ClassesForParameters;
 using JaomixDownloader.Resources;
 using YamlDotNet.RepresentationModel;
 
-
 namespace JaomixDownloader;
+
 public class FileMaker
 {
     public static void MakeLinksFile(List<string> urls, string path)
@@ -12,13 +13,9 @@ public class FileMaker
 
         urls.Reverse();
         var linksList = new List<string>();
-        foreach (string element in urls.Where(element => !linksList.Contains(element)))
-        {
-            linksList.Add(element);
-        }
+        foreach (string element in urls.Where(element => !linksList.Contains(element))) linksList.Add(element);
         var linksListFile = new StreamWriter(path, true, Encoding.UTF8);
         foreach (string element in linksList)
-        {
             try
             {
                 linksListFile.WriteLine(element);
@@ -28,7 +25,6 @@ public class FileMaker
             {
                 Console.WriteLine(element + GlobalResources.linkWriteInFileError);
             }
-        }
 
         linksListFile.Close();
         Console.WriteLine(GlobalResources.linksListMakerFinish);

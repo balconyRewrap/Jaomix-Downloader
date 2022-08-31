@@ -1,9 +1,8 @@
 ﻿using System.Configuration;
 using System.Globalization;
-#pragma warning disable CS8600
+using JaomixDownloader.Resources;
 
 namespace JaomixDownloader;
-
 
 internal class ConfigGiver
 {
@@ -16,20 +15,20 @@ internal class ConfigGiver
 
     private string CreateActiveFolderPath()
     {
-
         var currentConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
         string os = GiveOS();
         switch (os)
         {
             case "windows":
                 Console.WriteLine(
-                Resources.GlobalResources.ResourceManager.GetString("configActiveFolderWindows", CultureInfo.CurrentCulture));
+                    GlobalResources.ResourceManager.GetString("configActiveFolderWindows", CultureInfo.CurrentCulture));
                 break;
             case "linux":
                 Console.WriteLine(
-                    Resources.GlobalResources.ResourceManager.GetString("configActiveFolderLinux", CultureInfo.CurrentCulture));
+                    GlobalResources.ResourceManager.GetString("configActiveFolderLinux", CultureInfo.CurrentCulture));
                 break;
         }
+
         string newActiveFolderDirectory = CorrectDataGiver.GiveValidFolder(os);
         // добавляем позицию в раздел AppSettings
         currentConfig.AppSettings.Settings.Add("folder_directory", newActiveFolderDirectory);
@@ -49,13 +48,14 @@ internal class ConfigGiver
         {
             case "windows":
                 Console.WriteLine(
-                    Resources.GlobalResources.ResourceManager.GetString("configActiveFolderWindows", CultureInfo.CurrentCulture));
+                    GlobalResources.ResourceManager.GetString("configActiveFolderWindows", CultureInfo.CurrentCulture));
                 break;
             case "linux":
                 Console.WriteLine(
-                    Resources.GlobalResources.ResourceManager.GetString("configActiveFolderLinux", CultureInfo.CurrentCulture));
+                    GlobalResources.ResourceManager.GetString("configActiveFolderLinux", CultureInfo.CurrentCulture));
                 break;
         }
+
         string folderDirectoryReadLine = Console.ReadLine();
         // открываем текущий конфиг специальным обьектом
         currentConfig.AppSettings.Settings["folder_directory"].Value = folderDirectoryReadLine;
@@ -75,7 +75,7 @@ internal class ConfigGiver
 
     private string CreateProgramLanguage()
     {
-        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("langGiverHead", CultureInfo.CurrentCulture));
+        Console.WriteLine(GlobalResources.ResourceManager.GetString("langGiverHead", CultureInfo.CurrentCulture));
         // стандартное значение
         string lang = "en-US";
         Console.WriteLine("");
@@ -106,7 +106,7 @@ internal class ConfigGiver
     {
         var currentConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
         Console.WriteLine(
-            Resources.GlobalResources.ResourceManager.GetString("langGiverHead", CultureInfo.CurrentCulture));
+            GlobalResources.ResourceManager.GetString("langGiverHead", CultureInfo.CurrentCulture));
         string lang = "en-US";
         string langСhoice = Console.ReadLine();
         switch (langСhoice)
@@ -136,15 +136,12 @@ internal class ConfigGiver
 
     private static string CreateOS()
     {
-        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("OSGiverHead", CultureInfo.CurrentCulture));
+        Console.WriteLine(GlobalResources.ResourceManager.GetString("OSGiverHead", CultureInfo.CurrentCulture));
         // стандартное значение
         string os = "windows";
         Console.WriteLine("");
         string osChoice = Console.ReadLine();
-        if (osChoice == "1")
-        {
-            os = "linux";
-        }
+        if (osChoice == "1") os = "linux";
 
         // открываем текущий конфиг специальным обьектом
         var currentConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
@@ -160,15 +157,12 @@ internal class ConfigGiver
 
     public void ChangeOS()
     {
-        Console.WriteLine(Resources.GlobalResources.ResourceManager.GetString("OSGiverHead", CultureInfo.CurrentCulture));
+        Console.WriteLine(GlobalResources.ResourceManager.GetString("OSGiverHead", CultureInfo.CurrentCulture));
         // стандартное значение
         string os = "windows";
         Console.WriteLine("");
         string osChoice = Console.ReadLine();
-        if (osChoice == "1")
-        {
-            os = "linux";
-        }
+        if (osChoice == "1") os = "linux";
 
         // открываем текущий конфиг специальным обьектом
         var currentConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);

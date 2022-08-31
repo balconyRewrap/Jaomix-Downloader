@@ -203,4 +203,7 @@
   <data name="invalidTxtFile" xml:space="preserve">
     <value>Неправильный формат .txt файла. Пожалуйста, введите его снова.</value>
   </data>
+  <data name="convertingWait" xml:space="preserve">
+    <value>Пожалуйста, подождите!</value>
+  </data>
 </root>

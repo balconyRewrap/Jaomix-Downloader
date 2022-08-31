@@ -236,4 +236,7 @@ Enter 1, if Linux</value>
   <data name="invalidTxtFile" xml:space="preserve">
     <value>Invalid .txt file. Please write it again.</value>
   </data>
+  <data name="convertingWait" xml:space="preserve">
+	  <value>Please, wait!</value>
+  </data>
 </root>

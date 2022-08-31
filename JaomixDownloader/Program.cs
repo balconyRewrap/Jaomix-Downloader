@@ -10,8 +10,8 @@ internal class Program
         string language = configGiver.GiveProgramLanguage();
         Thread.CurrentThread.CurrentCulture = new CultureInfo(language);
         string folder = configGiver.GiveActiveFolderPath();
-        new Chooser(folder);
-
+        var chooser = new Chooser(folder);
+        chooser.Init();
         Console.WriteLine(@"PROGRAM FINISHED");
         Console.ReadKey();
     }

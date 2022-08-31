@@ -201,6 +201,15 @@ namespace JaomixDownloader.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please, wait!.
+        /// </summary>
+        internal static string convertingWait {
+            get {
+                return ResourceManager.GetString("convertingWait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Should the program save the .txt files of each chapter?
         ///Press ENTER, if shouldn&apos;t save
         ///Enter 1, if should save.
@@ -219,6 +228,33 @@ namespace JaomixDownloader.Resources {
         internal static string finalFileExtension {
             get {
                 return ResourceManager.GetString("finalFileExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Active Folder path, that you enter, is incorrect..
+        /// </summary>
+        internal static string invalidFolder {
+            get {
+                return ResourceManager.GetString("invalidFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid url. Please, enter the url of the book&apos;s webpage, for example https://jaomix.ru/category/prepodobnyj-gu/.
+        /// </summary>
+        internal static string InvalidJaomixUrl {
+            get {
+                return ResourceManager.GetString("InvalidJaomixUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid .txt file. Please write it again..
+        /// </summary>
+        internal static string invalidTxtFile {
+            get {
+                return ResourceManager.GetString("invalidTxtFile", resourceCulture);
             }
         }
         
