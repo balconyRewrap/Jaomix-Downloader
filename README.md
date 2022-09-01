@@ -31,6 +31,7 @@ HtmlAgilityPack
 Selenium.WebDriver
 Selenium.WebDriver.ChromeDriver
 System.Configuration.ConfigurationManager
+YamlDotNet
 ~~~~
 
 Установить pandoc последней версии (https://pandoc.org/installing.html)
