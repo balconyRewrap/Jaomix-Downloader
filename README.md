@@ -34,6 +34,8 @@ System.Configuration.ConfigurationManager
 YamlDotNet
 ~~~~
 
+## Если вдруг появляется ошибка с chromedriver из-за более новой версии:
+Скачайте под нужную версию хрома с https://chromedriver.chromium.org/downloads и замените его в папке
 Установить pandoc последней версии (https://pandoc.org/installing.html)
 
 Установить chrome последней версии (на данный момент 105)
