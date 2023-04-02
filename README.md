@@ -12,7 +12,7 @@
 
 Установите pandoc последней версии (https://pandoc.org/installing.html)
 
-Установите chromium последней версии (на данный момент 105)
+Установите chromium или chrome (если вдруг версия выше 105, то воспользуйтесь инструкцией ниже) 
 
 Распакуйте архив в папку
 
@@ -38,4 +38,3 @@ YamlDotNet
 Скачайте под нужную версию хрома с https://chromedriver.chromium.org/downloads и замените его в папке
 Установить pandoc последней версии (https://pandoc.org/installing.html)
 
-Установить chrome последней версии (на данный момент 105)
